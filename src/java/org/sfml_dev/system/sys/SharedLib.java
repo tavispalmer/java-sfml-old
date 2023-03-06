@@ -12,7 +12,6 @@ class SharedLib {
             try {
                 InputStream sharedLib = SharedLib.class.getResourceAsStream("/libsfml-java-system.so");
                 File tempFile = File.createTempFile("libsfml-java-system-", ".so");
-                System.out.println(tempFile.getAbsolutePath());
                 tempFile.deleteOnExit();
 
                 OutputStream tempFileStream = new FileOutputStream(tempFile);

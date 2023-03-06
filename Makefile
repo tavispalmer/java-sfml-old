@@ -7,13 +7,16 @@ CXXFLAGS := -fPIC -O2 \
 	-I/usr/lib/jvm/java-19-openjdk-amd64/include/linux
 
 SFML_SYSTEM_CLASSFILES := \
+	build/java/org/sfml_dev/system/Clock.class \
+	build/java/org/sfml_dev/system/CppObject.class \
+	build/java/org/sfml_dev/system/Time.class \
 	build/java/org/sfml_dev/system/Vector2i.class \
 	build/java/org/sfml_dev/system/sys/new_.class \
 	build/java/org/sfml_dev/system/sys/SFML_System.class \
 	build/java/org/sfml_dev/system/sys/SharedLib.class
 SFML_SYSTEM_OFILES := \
 	build/cpp/new.o \
-	build/cpp/System.o
+	build/cpp/SFML_System.o
 
 .PHONY: all clean
 
@@ -26,12 +29,15 @@ libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
 	jar cf $@ \
 	$$(for FILE in $(SFML_SYSTEM_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
-	done) -C build libsfml-java-system.so
+	done) \
+	-C build/java org/sfml_dev/system/CppObject\$$State.class \
+	-C build libsfml-java-system.so
 
 build/libsfml-java-system.so: $(SFML_SYSTEM_OFILES)
-	$(CC) -o $@ -shared $^
+	$(CXX) -shared -o $@ $^ -lsfml-system
 
 build/java/%.class: src/java/%.java
+	mkdir -p build/java
 	$(JAVAC) $(JAVACFLAGS) $<
 
 build/cpp/%.o: src/cpp/%.cpp
