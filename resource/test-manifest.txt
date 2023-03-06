@@ -1,0 +1,2 @@
+Class-Path: libsfml-system.jar
+Main-Class: Main
