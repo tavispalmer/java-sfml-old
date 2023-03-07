@@ -1,4 +1,5 @@
 JAVAC := javac
+JAR := jar
 JAVACFLAGS := -d build/java --source-path src/java
 
 CXX := g++
@@ -10,7 +11,10 @@ SFML_SYSTEM_CLASSFILES := \
 	build/java/org/sfml_dev/system/Clock.class \
 	build/java/org/sfml_dev/system/CppObject.class \
 	build/java/org/sfml_dev/system/Time.class \
+	build/java/org/sfml_dev/system/Vector2f.class \
 	build/java/org/sfml_dev/system/Vector2i.class \
+	build/java/org/sfml_dev/system/Vector3f.class \
+	build/java/org/sfml_dev/system/Vector3i.class \
 	build/java/org/sfml_dev/system/sys/new_.class \
 	build/java/org/sfml_dev/system/sys/SFML_System.class \
 	build/java/org/sfml_dev/system/sys/SharedLib.class
@@ -23,10 +27,10 @@ SFML_SYSTEM_OFILES := \
 all: test.jar libsfml-system.jar
 
 test.jar: build/java/Main.class resource/test-manifest.txt libsfml-system.jar
-	jar cfm $@ resource/test-manifest.txt -C build/java Main.class
+	$(JAR) cfm $@ resource/test-manifest.txt -C build/java Main.class
 
 libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
-	jar cf $@ \
+	$(JAR) cf $@ \
 	$$(for FILE in $(SFML_SYSTEM_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
 	done) \
