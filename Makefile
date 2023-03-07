@@ -15,19 +15,37 @@ SFML_SYSTEM_CLASSFILES := \
 	build/java/org/sfml_dev/system/Vector2i.class \
 	build/java/org/sfml_dev/system/Vector3f.class \
 	build/java/org/sfml_dev/system/Vector3i.class \
+	build/java/org/sfml_dev/system/sys/jni.class \
 	build/java/org/sfml_dev/system/sys/new_.class \
 	build/java/org/sfml_dev/system/sys/SFML_System.class \
-	build/java/org/sfml_dev/system/sys/SharedLib.class
+	build/java/org/sfml_dev/system/sys/SharedLib.class \
+	build/java/org/sfml_dev/system/sys/string.class
 SFML_SYSTEM_OFILES := \
+	build/cpp/jni.o \
 	build/cpp/new.o \
-	build/cpp/SFML_System.o
+	build/cpp/SFML_System.o \
+	build/cpp/string.o
+
+SFML_WINDOW_CLASSFILES := \
+	build/java/org/sfml_dev/window/Clipboard.class \
+	build/java/org/sfml_dev/window/sys/SFML_Window.class \
+	build/java/org/sfml_dev/window/sys/SharedLib.class
+SFML_WINDOW_OFILES := \
+	build/cpp/SFML_Window.o
 
 .PHONY: all clean
 
-all: test.jar libsfml-system.jar
+all: test.jar libsfml-system.jar libsfml-window.jar
 
-test.jar: build/java/Main.class resource/test-manifest.txt libsfml-system.jar
+test.jar: build/java/Main.class resource/test-manifest.txt libsfml-system.jar libsfml-window.jar
 	$(JAR) cfm $@ resource/test-manifest.txt -C build/java Main.class
+
+libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
+	$(JAR) cfm $@ resource/libsfml-window-manifest.txt \
+	$$(for FILE in $(SFML_WINDOW_CLASSFILES); \
+		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
+	done) \
+	-C build libsfml-java-window.so
 
 libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
 	$(JAR) cf $@ \
@@ -36,6 +54,9 @@ libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
 	done) \
 	-C build/java org/sfml_dev/system/CppObject\$$State.class \
 	-C build libsfml-java-system.so
+
+build/libsfml-java-window.so: $(SFML_WINDOW_OFILES)
+	$(CXX) -shared -o $@ $^ -lsfml-window
 
 build/libsfml-java-system.so: $(SFML_SYSTEM_OFILES)
 	$(CXX) -shared -o $@ $^ -lsfml-system

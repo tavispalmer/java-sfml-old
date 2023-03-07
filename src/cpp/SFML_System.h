@@ -39,6 +39,46 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1ge
 JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1restart
   (JNIEnv *, jclass, jlong);
 
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_String_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_String_String
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1String
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_String_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_String_fromUtf16
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1fromUtf16
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_String_toUtf16
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1toUtf16
+  (JNIEnv *, jclass, jlong, jlong);
+
 #ifdef __cplusplus
 }
 #endif
