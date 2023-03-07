@@ -49,4 +49,8 @@ public class Vector3f {
         }
         return false;
     }
+
+    public String toString() {
+        return "{x=" + x + ", y=" + y + ", z=" + z + "}";
+    }
 }

@@ -44,4 +44,8 @@ public class Vector2f {
         }
         return false;
     }
+
+    public String toString() {
+        return "{x=" + x + ", y=" + y + "}";
+    }
 }

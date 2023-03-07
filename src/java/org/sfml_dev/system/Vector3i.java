@@ -49,4 +49,8 @@ public class Vector3i {
         }
         return false;
     }
+
+    public String toString() {
+        return "{x=" + x + ", y=" + y + ", z=" + z + "}";
+    }
 }
