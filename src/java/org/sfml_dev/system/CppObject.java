@@ -11,8 +11,8 @@ public class CppObject {
 
     static class State implements Runnable {
 
-        long ptr;
-        LongConsumer destructor;
+        final long ptr;
+        final LongConsumer destructor;
 
         State(long sizeof, LongConsumer destructor) {
             this.ptr = operator_new(sizeof);
