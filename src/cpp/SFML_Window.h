@@ -23,6 +23,118 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Clipboard_
 JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Clipboard_1setString
   (JNIEnv *, jclass, jlong);
 
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_GlResource
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1GlResource
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_registerContextDestroyCallback
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1registerContextDestroyCallback
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_TransientContextLock_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1TransientContextLock_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_TransientContextLock_TransientContextLock
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1TransientContextLock_1TransientContextLock
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_GlResource_TransientContextLock_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1TransientContextLock_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_VideoMode
+ * Signature: (JIII)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1VideoMode
+  (JNIEnv *, jclass, jlong, jint, jint, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_getDesktopMode
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getDesktopMode
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_getFullscreenModes
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getFullscreenModes
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_getWidth
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getWidth
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_getHeight
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getHeight
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_VideoMode_getBitsPerPixel
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getBitsPerPixel
+  (JNIEnv *, jclass, jlong);
+
 #ifdef __cplusplus
 }
 #endif

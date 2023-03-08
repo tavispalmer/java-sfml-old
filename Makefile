@@ -19,15 +19,26 @@ SFML_SYSTEM_CLASSFILES := \
 	build/java/org/sfml_dev/system/sys/new_.class \
 	build/java/org/sfml_dev/system/sys/SFML_System.class \
 	build/java/org/sfml_dev/system/sys/SharedLib.class \
-	build/java/org/sfml_dev/system/sys/string.class
+	build/java/org/sfml_dev/system/sys/string.class \
+	build/java/org/sfml_dev/system/sys/vector.class
 SFML_SYSTEM_OFILES := \
 	build/cpp/jni.o \
 	build/cpp/new.o \
 	build/cpp/SFML_System.o \
-	build/cpp/string.o
+	build/cpp/string.o \
+	build/cpp/vector.o
 
 SFML_WINDOW_CLASSFILES := \
 	build/java/org/sfml_dev/window/Clipboard.class \
+	build/java/org/sfml_dev/window/ContextDestroyCallback.class \
+	build/java/org/sfml_dev/window/Event.class \
+	build/java/org/sfml_dev/window/GlResource.class \
+	build/java/org/sfml_dev/window/MouseMoveEvent.class \
+	build/java/org/sfml_dev/window/MouseWheelEvent.class \
+	build/java/org/sfml_dev/window/SizeEvent.class \
+	build/java/org/sfml_dev/window/Style.class \
+	build/java/org/sfml_dev/window/TextEvent.class \
+	build/java/org/sfml_dev/window/VideoMode.class \
 	build/java/org/sfml_dev/window/sys/SFML_Window.class \
 	build/java/org/sfml_dev/window/sys/SharedLib.class
 SFML_WINDOW_OFILES := \
@@ -45,6 +56,7 @@ libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
 	$$(for FILE in $(SFML_WINDOW_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
 	done) \
+	-C build/java org/sfml_dev/window/GlResource\$$TransientContextLock.class \
 	-C build libsfml-java-window.so
 
 libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
