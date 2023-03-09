@@ -47,3 +47,49 @@ void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1toUtf16(JNIEnv *, jc
 {
     new (reinterpret_cast<void *>(ret)) std::basic_string<sf::Uint16>(reinterpret_cast<sf::String *>(this_)->toUtf16());
 }
+
+jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2i_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Vector2i));
+}
+
+void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2i_1Vector2i(JNIEnv *, jclass, jlong this_, jint x, jint y)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Vector2i(
+        static_cast<int>(x),
+        static_cast<int>(y)
+    );
+}
+
+jint Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2i_1getX(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Vector2i *>(this_)->x);
+}
+
+jint Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2i_1getY(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Vector2i *>(this_)->y);
+}
+
+jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Vector2u));
+}
+
+void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1Vector2u(JNIEnv *, jclass, jlong this_, jint x, jint y)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Vector2u(
+        static_cast<unsigned int>(x),
+        static_cast<unsigned int>(y)
+    );
+}
+
+jint Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1getX(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Vector2u *>(this_)->x);
+}
+
+jint Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1getY(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Vector2u *>(this_)->y);
+}

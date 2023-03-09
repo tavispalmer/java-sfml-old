@@ -6,7 +6,9 @@ public class string {
     }
     private string() {}
 
-    public static native long std_u16string_sizeof();
+    public static final long std_u16string_sizeof = std_u16string_sizeof();
+
+    private static native long std_u16string_sizeof();
     public static native void std_u16string_destructor(long this_);
     public static native long std_u16string_data(long this_);
     public static native long std_u16string_size(long this_);

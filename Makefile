@@ -31,7 +31,10 @@ SFML_SYSTEM_OFILES := \
 SFML_WINDOW_CLASSFILES := \
 	build/java/org/sfml_dev/window/Clipboard.class \
 	build/java/org/sfml_dev/window/ContextDestroyCallback.class \
+	build/java/org/sfml_dev/window/ContextSettings.class \
+	build/java/org/sfml_dev/window/Cursor.class \
 	build/java/org/sfml_dev/window/Event.class \
+	build/java/org/sfml_dev/window/EventHandler.class \
 	build/java/org/sfml_dev/window/GlResource.class \
 	build/java/org/sfml_dev/window/MouseMoveEvent.class \
 	build/java/org/sfml_dev/window/MouseWheelEvent.class \
@@ -39,6 +42,8 @@ SFML_WINDOW_CLASSFILES := \
 	build/java/org/sfml_dev/window/Style.class \
 	build/java/org/sfml_dev/window/TextEvent.class \
 	build/java/org/sfml_dev/window/VideoMode.class \
+	build/java/org/sfml_dev/window/Window.class \
+	build/java/org/sfml_dev/window/WindowHandle.class \
 	build/java/org/sfml_dev/window/sys/SFML_Window.class \
 	build/java/org/sfml_dev/window/sys/SharedLib.class
 SFML_WINDOW_OFILES := \

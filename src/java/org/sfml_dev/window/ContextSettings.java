@@ -51,4 +51,14 @@ public class ContextSettings {
         this.attributeFlags = attributes;
         this.sRgbCapable = sRgb;
     }
+
+    public String toString() {
+        return "{depthBits=" + depthBits +
+                ", stencilBits=" + stencilBits +
+                ", antialiasingLevel=" + antialiasingLevel +
+                ", majorVersion=" + majorVersion +
+                ", minorVersion=" + minorVersion +
+                ", attributeFlags=" + attributeFlags +
+                ", sRgbCapable=" + sRgbCapable + "}";
+    }
 }

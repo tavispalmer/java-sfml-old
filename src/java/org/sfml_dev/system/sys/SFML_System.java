@@ -6,13 +6,26 @@ public class SFML_System {
     }
     private SFML_System() {}
 
-    public static native long sf_Clock_sizeof();
+    public static final long sf_Clock_sizeof = sf_Clock_sizeof();
+    public static final long sf_String_sizeof = sf_String_sizeof();
+    public static final long sf_Vector2i_sizeof = sf_Vector2i_sizeof();
+    public static final long sf_Vector2u_sizeof = sf_Vector2u_sizeof();
+
+    private static native long sf_Clock_sizeof();
     public static native void sf_Clock_Clock(long this_);
     public static native long sf_Clock_getElapsedTime(long this_);
     public static native long sf_Clock_restart(long this_);
-    public static native long sf_String_sizeof();
+    private static native long sf_String_sizeof();
     public static native void sf_String_String(long this_);
     public static native void sf_String_destructor(long this_);
     public static native void sf_String_fromUtf16(long ret, long begin, long end);
     public static native void sf_String_toUtf16(long ret, long this_);
+    private static native long sf_Vector2i_sizeof();
+    public static native void sf_Vector2i_Vector2i(long this_, int x, int y);
+    public static native int sf_Vector2i_getX(long this_);
+    public static native int sf_Vector2i_getY(long this_);
+    private static native long sf_Vector2u_sizeof();
+    public static native void sf_Vector2u_Vector2u(long this_, int x, int y);
+    public static native int sf_Vector2u_getX(long this_);
+    public static native int sf_Vector2u_getY(long this_);
 }

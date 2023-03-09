@@ -6,6 +6,9 @@ public class jni {
     }
     private jni() {}
 
+    public static final int JNI_COMMIT = 1;
+    public static final int JNI_ABORT = 2;
+
     /**
      * Constructs a new {@link java.lang.String} object from an array of Unicode characters.
      * 
@@ -34,4 +37,7 @@ public class jni {
      * @param chars a pointer to a Unicode string.
      */
     public static native void ReleaseStringChars(String string, long chars);
+
+    public static native long GetByteArrayElements(byte[] array, long isCopy);
+    public static native void ReleaseByteArrayElements(byte[] array, long elems, int mode);
 }

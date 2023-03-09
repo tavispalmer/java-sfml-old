@@ -7,6 +7,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+#undef org_sfml_dev_system_sys_jni_JNI_COMMIT
+#define org_sfml_dev_system_sys_jni_JNI_COMMIT 1L
+#undef org_sfml_dev_system_sys_jni_JNI_ABORT
+#define org_sfml_dev_system_sys_jni_JNI_ABORT 2L
 /*
  * Class:     org_sfml_dev_system_sys_jni
  * Method:    NewString
@@ -30,6 +34,22 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_jni_GetStringChars
  */
 JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_jni_ReleaseStringChars
   (JNIEnv *, jclass, jstring, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_jni
+ * Method:    GetByteArrayElements
+ * Signature: ([BJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_jni_GetByteArrayElements
+  (JNIEnv *, jclass, jbyteArray, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_jni
+ * Method:    ReleaseByteArrayElements
+ * Signature: ([BJI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_jni_ReleaseByteArrayElements
+  (JNIEnv *, jclass, jbyteArray, jlong, jint);
 
 #ifdef __cplusplus
 }

@@ -11,10 +11,10 @@ public class Clipboard {
     private Clipboard() {}
 
     public static String getString() {
-        long sfString = operator_new(sf_String_sizeof());
+        long sfString = operator_new(sf_String_sizeof);
         sf_Clipboard_getString(sfString);
 
-        long u16String = operator_new(std_u16string_sizeof());
+        long u16String = operator_new(std_u16string_sizeof);
         sf_String_toUtf16(u16String, sfString);
 
         sf_String_destructor(sfString);
@@ -31,7 +31,7 @@ public class Clipboard {
         if (text != null) {
             long u16String = GetStringChars(text, 0);
 
-            long sfString = operator_new(sf_String_sizeof());
+            long sfString = operator_new(sf_String_sizeof);
             sf_String_fromUtf16(sfString, u16String, u16String + text.length() * 2);
 
             ReleaseStringChars(text, u16String);
@@ -41,7 +41,7 @@ public class Clipboard {
             operator_delete(sfString);
         }
         else {
-            long sfString = operator_new(sf_String_sizeof());
+            long sfString = operator_new(sf_String_sizeof);
             sf_String_String(sfString);
             sf_Clipboard_setString(sfString);
             sf_String_destructor(sfString);

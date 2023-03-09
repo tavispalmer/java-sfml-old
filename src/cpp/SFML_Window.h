@@ -25,6 +25,502 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Clipboard_
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_ContextSettings
+ * Signature: (JIIIIIIZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1ContextSettings
+  (JNIEnv *, jclass, jlong, jint, jint, jint, jint, jint, jint, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getDepthBits
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getDepthBits
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getStencilBits
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getStencilBits
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getAntialiasingLevel
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getAntialiasingLevel
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getMajorVersion
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getMajorVersion
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getMinorVersion
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getMinorVersion
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getAttributeFlags
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getAttributeFlags
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_ContextSettings_getSRgbCapable
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1ContextSettings_1getSRgbCapable
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Cursor_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Cursor_Cursor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1Cursor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Cursor_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Cursor_loadFromPixels
+ * Signature: (JJJJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1loadFromPixels
+  (JNIEnv *, jclass, jlong, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Cursor_loadFromSystem
+ * Signature: (JI)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1loadFromSystem
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_Event
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1Event
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_getType
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1getType
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_size
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1size
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_key
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1key
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_text
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1text
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_mouseMove
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1mouseMove
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_mouseButton
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1mouseButton
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_mouseWheel
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1mouseWheel
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_mouseWheelScroll
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1mouseWheelScroll
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_joystickMove
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1joystickMove
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_joystickButton
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1joystickButton
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_joystickConnect
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1joystickConnect
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_touch
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1touch
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_sensor
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1sensor
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SizeEvent_getWidth
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SizeEvent_1getWidth
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SizeEvent_getHeight
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SizeEvent_1getHeight
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_KeyEvent_getCode
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1KeyEvent_1getCode
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_KeyEvent_getAlt
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1KeyEvent_1getAlt
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_KeyEvent_getControl
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1KeyEvent_1getControl
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_KeyEvent_getShift
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1KeyEvent_1getShift
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_KeyEvent_getSystem
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1KeyEvent_1getSystem
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_TextEvent_getUnicode
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1TextEvent_1getUnicode
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseMoveEvent_getX
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseMoveEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseMoveEvent_getY
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseMoveEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseButtonEvent_getButton
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseButtonEvent_1getButton
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseButtonEvent_getX
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseButtonEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseButtonEvent_getY
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseButtonEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelEvent_getDelta
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelEvent_1getDelta
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelEvent_getX
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelEvent_getY
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelScrollEvent_getWheel
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelScrollEvent_1getWheel
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelScrollEvent_getDelta
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelScrollEvent_1getDelta
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelScrollEvent_getX
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelScrollEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_MouseWheelScrollEvent_getY
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1MouseWheelScrollEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickConnectEvent_getJoystickId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickConnectEvent_1getJoystickId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickMoveEvent_getJoystickId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickMoveEvent_1getJoystickId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickMoveEvent_getAxis
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickMoveEvent_1getAxis
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickMoveEvent_getPosition
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickMoveEvent_1getPosition
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickButtonEvent_getJoystickId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickButtonEvent_1getJoystickId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_JoystickButtonEvent_getButton
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1JoystickButtonEvent_1getButton
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_TouchEvent_getFinger
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1TouchEvent_1getFinger
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_TouchEvent_getX
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1TouchEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_TouchEvent_getY
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1TouchEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SensorEvent_getType
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SensorEvent_1getType
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SensorEvent_getX
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SensorEvent_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SensorEvent_getY
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SensorEvent_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Event_SensorEvent_getZ
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Event_1SensorEvent_1getZ
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_GlResource_sizeof
  * Signature: ()J
  */
@@ -133,6 +629,254 @@ JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_
  * Signature: (J)I
  */
 JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getBitsPerPixel
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_Window
+ * Signature: (JLorg/sfml_dev/window/Window;)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2
+  (JNIEnv *, jclass, jlong, jobject);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_Window
+ * Signature: (JLorg/sfml_dev/window/Window;JIJIJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JIJIJ
+  (JNIEnv *, jclass, jlong, jobject, jlong, jint, jlong, jint, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_Window
+ * Signature: (JLorg/sfml_dev/window/Window;JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJ
+  (JNIEnv *, jclass, jlong, jobject, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_create
+ * Signature: (JJIJIJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJIJIJ
+  (JNIEnv *, jclass, jlong, jlong, jint, jlong, jint, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_create
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJJ
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_close
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1close
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_isOpen
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1isOpen
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_getSettings
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSettings
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_pollEvent
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1pollEvent
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_waitEvent
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1waitEvent
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_getPosition
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getPosition
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setPosition
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setPosition
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_getSize
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSize
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setSize
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setSize
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setTitle
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setTitle
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setIcon
+ * Signature: (JIIJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setIcon
+  (JNIEnv *, jclass, jlong, jint, jint, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setVisible
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setVisible
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setVerticalSyncEnabled
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setVerticalSyncEnabled
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setMouseCursorVisible
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setMouseCursorVisible
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setMouseCursorGrabbed
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setMouseCursorGrabbed
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setMouseCursor
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setMouseCursor
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setKeyRepeatEnabled
+ * Signature: (JZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setKeyRepeatEnabled
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setFramerateLimit
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setFramerateLimit
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setJoystickThreshold
+ * Signature: (JF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setJoystickThreshold
+  (JNIEnv *, jclass, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_setActive
+ * Signature: (JZ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setActive
+  (JNIEnv *, jclass, jlong, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_requestFocus
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1requestFocus
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_hasFocus
+ * Signature: (J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1hasFocus
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_display
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1display
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_getSystemHandle
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSystemHandle
   (JNIEnv *, jclass, jlong);
 
 #ifdef __cplusplus

@@ -23,3 +23,20 @@ void Java_org_sfml_1dev_system_sys_jni_ReleaseStringChars(JNIEnv *env, jclass, j
         reinterpret_cast<const jchar *>(chars)
     );
 }
+
+jlong Java_org_sfml_1dev_system_sys_jni_GetByteArrayElements(JNIEnv *env, jclass, jbyteArray array, jlong isCopy)
+{
+    return reinterpret_cast<jlong>(env->GetByteArrayElements(
+        array,
+        reinterpret_cast<jboolean *>(isCopy)
+    ));
+}
+
+void Java_org_sfml_1dev_system_sys_jni_ReleaseByteArrayElements(JNIEnv *env, jclass, jbyteArray array, jlong elems, jint mode)
+{
+    env->ReleaseByteArrayElements(
+        array,
+        reinterpret_cast<jbyte *>(elems),
+        mode
+    );
+}

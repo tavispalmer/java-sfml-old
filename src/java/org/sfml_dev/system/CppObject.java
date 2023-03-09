@@ -5,7 +5,7 @@ import java.util.function.LongConsumer;
 
 import static org.sfml_dev.system.sys.new_.*;
 
-public class CppObject {
+public abstract class CppObject {
     
     private static final Cleaner CLEANER = Cleaner.create();
 
@@ -26,15 +26,20 @@ public class CppObject {
     }
 
     private final State state;
-    private final Cleaner.Cleanable cleanable;
 
-    public CppObject(long sizeof, LongConsumer destructor) {
-        this.state = new State(sizeof, destructor);
-        this.cleanable = CLEANER.register(this, state);
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> this.cleanable.clean()));
+    public CppObject() {
+        this.state = new State(sizeof(), getDestructor());
+        Cleaner.Cleanable cleanable = CLEANER.register(this, state);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> cleanable.clean()));
     }
 
-    public long getPtr() {
+    public final long getPtr() {
         return state.ptr;
+    }
+
+    protected abstract long sizeof();
+
+    protected LongConsumer getDestructor() {
+        return ptr -> {};
     }
 }
