@@ -577,6 +577,102 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_isConnected
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1isConnected
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_getButtonCount
+ * Signature: (I)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getButtonCount
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_hasAxis
+ * Signature: (II)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1hasAxis
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_isButtonPressed
+ * Signature: (II)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1isButtonPressed
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_getAxisPosition
+ * Signature: (II)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getAxisPosition
+  (JNIEnv *, jclass, jint, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_getIdentification
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getIdentification
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_update
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1update
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_Identification_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_Identification_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_Identification_name
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1name
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_Identification_getVendorId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1getVendorId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Joystick_Identification_getProductId
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1getProductId
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Keyboard_isKeyPressed
  * Signature: (I)Z
  */
@@ -590,6 +686,94 @@ JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboa
  */
 JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1setVirtualKeyboardVisible
   (JNIEnv *, jclass, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Mouse_isButtonPressed
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1isButtonPressed
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Mouse_getPosition
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Mouse_getPosition
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Mouse_setPosition
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1setPosition__J
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Mouse_setPosition
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1setPosition__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Sensor_isAvailable
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1isAvailable
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Sensor_setEnabled
+ * Signature: (IZ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1setEnabled
+  (JNIEnv *, jclass, jint, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Sensor_getValue
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1getValue
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Touch_isDown
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1isDown
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Touch_getPosition
+ * Signature: (I)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__I
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Touch_getPosition
+ * Signature: (IJ)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__IJ
+  (JNIEnv *, jclass, jint, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window

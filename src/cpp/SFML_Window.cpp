@@ -435,6 +435,81 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1TransientContext
     reinterpret_cast<JavaGlResource::JavaTransientContextLock *>(this_)->~JavaTransientContextLock();
 }
 
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1isConnected(JNIEnv *, jclass, jint joystick)
+{
+    return static_cast<jboolean>(sf::Joystick::isConnected(
+        static_cast<unsigned int>(joystick)
+    ));
+}
+
+jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getButtonCount(JNIEnv *, jclass, jint joystick)
+{
+    return static_cast<jint>(sf::Joystick::getButtonCount(
+        static_cast<unsigned int>(joystick)
+    ));
+}
+
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1hasAxis(JNIEnv *, jclass, jint joystick, jint axis)
+{
+    return static_cast<jboolean>(sf::Joystick::hasAxis(
+        static_cast<unsigned int>(joystick),
+        static_cast<sf::Joystick::Axis>(axis)
+    ));
+}
+
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1isButtonPressed(JNIEnv *, jclass, jint joystick, jint button)
+{
+    return static_cast<jboolean>(sf::Joystick::isButtonPressed(
+        static_cast<unsigned int>(joystick),
+        static_cast<unsigned int>(button)
+    ));
+}
+
+jfloat Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getAxisPosition(JNIEnv *, jclass, jint joystick, jint axis)
+{
+    return static_cast<jfloat>(sf::Joystick::getAxisPosition(
+        static_cast<unsigned int>(joystick),
+        static_cast<sf::Joystick::Axis>(axis)
+    ));
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1getIdentification(JNIEnv *, jclass, jlong ret, jint joystick)
+{
+    new (reinterpret_cast<void *>(ret)) sf::Joystick::Identification(sf::Joystick::getIdentification(
+        static_cast<unsigned int>(joystick)
+    ));
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1update(JNIEnv *, jclass)
+{
+    sf::Joystick::update();
+}
+
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Joystick::Identification));
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1destructor(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<sf::Joystick::Identification *>(this_)->~Identification();
+}
+
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1name(JNIEnv *, jclass)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Joystick::Identification *>(NULL)->name);
+}
+
+jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1getVendorId(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Joystick::Identification *>(this_)->vendorId);
+}
+
+jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Joystick_1Identification_1getProductId(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::Joystick::Identification *>(this_)->productId);
+}
+
 jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1isKeyPressed(JNIEnv *, jclass, jint key)
 {
     return static_cast<jboolean>(sf::Keyboard::isKeyPressed(
@@ -446,6 +521,105 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1setVirtualKeyboard
 {
     sf::Keyboard::setVirtualKeyboardVisible(
         static_cast<bool>(visible)
+    );
+}
+
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1isButtonPressed(JNIEnv *, jclass, jint button)
+{
+    return static_cast<jboolean>(sf::Mouse::isButtonPressed(
+        static_cast<sf::Mouse::Button>(button)
+    ));
+}
+
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__(JNIEnv *, jclass)
+{
+    sf::Vector2i position = sf::Mouse::getPosition();
+    return static_cast<jlong>(
+        ((uint64_t)position.x & 0xffffffff) |
+        ((uint64_t)position.y << 32)
+    );
+}
+
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J(JNIEnv *, jclass, jlong relativeTo)
+{
+    sf::Vector2i position = sf::Mouse::getPosition(
+        *reinterpret_cast<sf::Window *>(relativeTo)
+    );
+    return static_cast<jlong>(
+        ((uint64_t)position.x & 0xffffffff) |
+        ((uint64_t)position.y << 32)
+    );
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1setPosition__J(JNIEnv *, jclass, jlong position)
+{
+    sf::Mouse::setPosition(
+        *reinterpret_cast<sf::Vector2i *>(position)
+    );
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1setPosition__JJ(JNIEnv *, jclass, jlong position, jlong relativeTo)
+{
+    sf::Mouse::setPosition(
+        *reinterpret_cast<sf::Vector2i *>(position),
+        *reinterpret_cast<sf::Window *>(relativeTo)
+    );
+}
+
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1isAvailable(JNIEnv *, jclass, jint sensor)
+{
+    return static_cast<jboolean>(sf::Sensor::isAvailable(
+        static_cast<sf::Sensor::Type>(sensor)
+    ));
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1setEnabled(JNIEnv *, jclass, jint sensor, jboolean enabled)
+{
+    sf::Sensor::setEnabled(
+        static_cast<sf::Sensor::Type>(sensor),
+        static_cast<bool>(enabled)
+    );
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1getValue(JNIEnv *, jclass, jlong ret, jint sensor)
+{
+    // technically not optimized for amd64
+    // but there's no way for java to return
+    // a value larger than 64-bits
+    new (reinterpret_cast<void *>(ret)) sf::Vector3f(sf::Sensor::getValue(
+        static_cast<sf::Sensor::Type>(sensor)
+    ));
+}
+
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1isDown(JNIEnv *, jclass, jint finger)
+{
+    return static_cast<jboolean>(sf::Touch::isDown(
+        static_cast<unsigned int>(finger)
+    ));
+}
+
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__I(JNIEnv *, jclass, jint finger)
+{
+    sf::Vector2i position = sf::Touch::getPosition(
+        static_cast<unsigned int>(finger)
+    );
+
+    return static_cast<jlong>(
+        ((uint64_t)position.x & 0xffffffff) |
+        ((uint64_t)position.y << 32)
+    );
+}
+
+jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__IJ(JNIEnv *, jclass, jint finger, jlong relativeTo)
+{
+    sf::Vector2i position = sf::Touch::getPosition(
+        static_cast<unsigned int>(finger),
+        *reinterpret_cast<sf::Window *>(relativeTo)
+    );
+
+    return static_cast<jlong>(
+        ((uint64_t)position.x & 0xffffffff) |
+        ((uint64_t)position.y << 32)
     );
 }
 

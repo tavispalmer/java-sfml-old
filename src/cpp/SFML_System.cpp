@@ -93,3 +93,23 @@ jint Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1getY(JNIEnv *, jcl
 {
     return static_cast<jint>(reinterpret_cast<sf::Vector2u *>(this_)->y);
 }
+
+jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Vector3f));
+}
+
+jfloat Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getX(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Vector3f *>(this_)->x);
+}
+
+jfloat Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getY(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Vector3f *>(this_)->y);
+}
+
+jfloat Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getZ(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Vector3f *>(this_)->z);
+}

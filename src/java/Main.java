@@ -9,6 +9,8 @@ public class Main {
         window.setFramerateLimit(60);
         window.closed = (w, e) -> w.close();
 
+        System.out.println(Joystick.getIdentification(0));
+
         while (window.isOpen()) {
             window.dispatchEvents();
             window.display();

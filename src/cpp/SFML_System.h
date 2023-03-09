@@ -143,6 +143,38 @@ JNIEXPORT jint JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1
 JNIEXPORT jint JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1getY
   (JNIEnv *, jclass, jlong);
 
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector3f_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector3f_getX
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getX
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector3f_getY
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getY
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector3f_getZ
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1getZ
+  (JNIEnv *, jclass, jlong);
+
 #ifdef __cplusplus
 }
 #endif
