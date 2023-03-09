@@ -99,6 +99,8 @@ public class SFML_Window {
     private static native long sf_GlResource_TransientContextLock_sizeof();
     public static native void sf_GlResource_TransientContextLock_TransientContextLock(long this_);
     public static native void sf_GlResource_TransientContextLock_destructor(long this_);
+    public static native boolean sf_Keyboard_isKeyPressed(int key);
+    public static native void sf_Keyboard_setVirtualKeyboardVisible(boolean visible);
     private static native long sf_VideoMode_sizeof();
     public static native void sf_VideoMode_VideoMode(long this_, int modeWidth, int modeHeight, int modeBitsPerPixel);
     public static native void sf_VideoMode_getDesktopMode(long ret);

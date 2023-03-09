@@ -36,6 +36,8 @@ SFML_WINDOW_CLASSFILES := \
 	build/java/org/sfml_dev/window/Event.class \
 	build/java/org/sfml_dev/window/EventHandler.class \
 	build/java/org/sfml_dev/window/GlResource.class \
+	build/java/org/sfml_dev/window/Keyboard.class \
+	build/java/org/sfml_dev/window/KeyEvent.class \
 	build/java/org/sfml_dev/window/MouseMoveEvent.class \
 	build/java/org/sfml_dev/window/MouseWheelEvent.class \
 	build/java/org/sfml_dev/window/SizeEvent.class \
@@ -62,6 +64,7 @@ libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
 	done) \
 	-C build/java org/sfml_dev/window/GlResource\$$TransientContextLock.class \
+	-C build/java org/sfml_dev/window/Keyboard\$$Key.class \
 	-C build libsfml-java-window.so
 
 libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so

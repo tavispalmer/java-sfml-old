@@ -21,6 +21,12 @@ public class Window extends GlResource {
 
     public EventHandler<TextEvent> textEntered = null;
 
+    public EventHandler<KeyEvent> keyPressed = null;
+
+    public EventHandler<KeyEvent> keyReleased = null;
+
+    public EventHandler<MouseWheelEvent> mouseWheelMoved = null;
+
     public Window() {
         sf_Window_Window(getPtr(), this);
     }
@@ -419,6 +425,42 @@ public class Window extends GlResource {
                     long e_text = e + sf_Event_text;
                     textEntered.invoke(this, new TextEvent(
                         sf_Event_TextEvent_getUnicode(e_text)
+                    ));
+                }
+                break;
+            case EVENT_KEY_PRESSED:
+                if (keyPressed != null) {
+                    long e_key = e + sf_Event_key;
+                    int e_key_code = sf_Event_KeyEvent_getCode(e_key);
+                    keyPressed.invoke(this, new KeyEvent(
+                        e_key_code != -1 ? Keyboard.Key.values()[e_key_code] : Keyboard.Key.UNKNOWN,
+                        sf_Event_KeyEvent_getAlt(e_key),
+                        sf_Event_KeyEvent_getControl(e_key),
+                        sf_Event_KeyEvent_getShift(e_key),
+                        sf_Event_KeyEvent_getSystem(e_key)
+                    ));
+                }
+                break;
+            case EVENT_KEY_RELEASED:
+                if (keyReleased != null) {
+                    long e_key = e + sf_Event_key;
+                    int e_key_code = sf_Event_KeyEvent_getCode(e_key);
+                    keyReleased.invoke(this, new KeyEvent(
+                        e_key_code != -1 ? Keyboard.Key.values()[e_key_code] : Keyboard.Key.UNKNOWN,
+                        sf_Event_KeyEvent_getAlt(e_key),
+                        sf_Event_KeyEvent_getControl(e_key),
+                        sf_Event_KeyEvent_getShift(e_key),
+                        sf_Event_KeyEvent_getSystem(e_key)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_WHEEL_MOVED:
+                if (mouseWheelMoved != null) {
+                    long e_mouseWheel = e + sf_Event_mouseWheel;
+                    mouseWheelMoved.invoke(this, new MouseWheelEvent(
+                        sf_Event_MouseWheelEvent_getDelta(e_mouseWheel),
+                        sf_Event_MouseWheelEvent_getX(e_mouseWheel),
+                        sf_Event_MouseWheelEvent_getY(e_mouseWheel)
                     ));
                 }
                 break;

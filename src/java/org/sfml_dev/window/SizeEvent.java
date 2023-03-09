@@ -8,4 +8,9 @@ public class SizeEvent extends Event {
         this.width = width;
         this.height = height;
     }
+
+    public String toString() {
+        return "{width=" + width +
+                ", height=" + height + "}";
+    }
 }

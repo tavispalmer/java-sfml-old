@@ -435,6 +435,20 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource_1TransientContext
     reinterpret_cast<JavaGlResource::JavaTransientContextLock *>(this_)->~JavaTransientContextLock();
 }
 
+jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1isKeyPressed(JNIEnv *, jclass, jint key)
+{
+    return static_cast<jboolean>(sf::Keyboard::isKeyPressed(
+        static_cast<sf::Keyboard::Key>(key)
+    ));
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1setVirtualKeyboardVisible(JNIEnv *, jclass, jboolean visible)
+{
+    sf::Keyboard::setVirtualKeyboardVisible(
+        static_cast<bool>(visible)
+    );
+}
+
 jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1sizeof(JNIEnv *, jclass)
 {
     return static_cast<jlong>(sizeof(sf::VideoMode));

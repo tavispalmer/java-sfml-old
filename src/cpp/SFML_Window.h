@@ -577,6 +577,22 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1GlResource
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Keyboard_isKeyPressed
+ * Signature: (I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1isKeyPressed
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Keyboard_setVirtualKeyboardVisible
+ * Signature: (Z)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Keyboard_1setVirtualKeyboardVisible
+  (JNIEnv *, jclass, jboolean);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_VideoMode_sizeof
  * Signature: ()J
  */
