@@ -37,16 +37,23 @@ SFML_WINDOW_CLASSFILES := \
 	build/java/org/sfml_dev/window/EventHandler.class \
 	build/java/org/sfml_dev/window/GlResource.class \
 	build/java/org/sfml_dev/window/Joystick.class \
+	build/java/org/sfml_dev/window/JoystickButtonEvent.class \
+	build/java/org/sfml_dev/window/JoystickConnectEvent.class \
+	build/java/org/sfml_dev/window/JoystickMoveEvent.class \
 	build/java/org/sfml_dev/window/Keyboard.class \
 	build/java/org/sfml_dev/window/KeyEvent.class \
 	build/java/org/sfml_dev/window/Mouse.class \
+	build/java/org/sfml_dev/window/MouseButtonEvent.class \
 	build/java/org/sfml_dev/window/MouseMoveEvent.class \
 	build/java/org/sfml_dev/window/MouseWheelEvent.class \
+	build/java/org/sfml_dev/window/MouseWheelScrollEvent.class \
 	build/java/org/sfml_dev/window/Sensor.class \
+	build/java/org/sfml_dev/window/SensorEvent.class \
 	build/java/org/sfml_dev/window/SizeEvent.class \
 	build/java/org/sfml_dev/window/Style.class \
 	build/java/org/sfml_dev/window/TextEvent.class \
 	build/java/org/sfml_dev/window/Touch.class \
+	build/java/org/sfml_dev/window/TouchEvent.class \
 	build/java/org/sfml_dev/window/VideoMode.class \
 	build/java/org/sfml_dev/window/Window.class \
 	build/java/org/sfml_dev/window/WindowHandle.class \
