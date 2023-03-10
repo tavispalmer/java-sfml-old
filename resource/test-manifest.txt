@@ -1,2 +1,2 @@
-Class-Path: libsfml-system.jar libsfml-window.jar
+Class-Path: libsfml-system.jar libsfml-window.jar libsfml-graphics.jar
 Main-Class: Main

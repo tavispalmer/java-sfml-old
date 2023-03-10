@@ -62,12 +62,22 @@ SFML_WINDOW_CLASSFILES := \
 SFML_WINDOW_OFILES := \
 	build/cpp/SFML_Window.o
 
+SFML_GRAPHICS_CLASSFILES := \
+	build/java/org/sfml_dev/graphics/FloatRect.class \
+	build/java/org/sfml_dev/graphics/IntRect.class
+
 .PHONY: all clean
 
-all: test.jar libsfml-system.jar libsfml-window.jar
+all: test.jar libsfml-system.jar libsfml-window.jar libsfml-graphics.jar
 
 test.jar: build/java/Main.class resource/test-manifest.txt libsfml-system.jar libsfml-window.jar
 	$(JAR) cfm $@ resource/test-manifest.txt -C build/java Main.class
+
+libsfml-graphics.jar: $(SFML_GRAPHICS_CLASSFILES)
+	$(JAR) cfm $@ resource/libsfml-graphics-manifest.txt \
+	$$(for FILE in $(SFML_GRAPHICS_CLASSFILES); \
+		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
+	done)
 
 libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
 	$(JAR) cfm $@ resource/libsfml-window-manifest.txt \

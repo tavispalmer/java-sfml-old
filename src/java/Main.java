@@ -2,6 +2,7 @@ import java.util.*;
 
 import org.sfml_dev.system.*;
 import org.sfml_dev.window.*;
+import org.sfml_dev.graphics.*;
 
 public class Main {
     public static void main(String[] args) {

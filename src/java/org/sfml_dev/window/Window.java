@@ -426,12 +426,12 @@ public class Window extends GlResource {
 
     private void callEventHandler(long e) {
         switch (sf_Event_getType(e)) {
-            case EVENT_CLOSED:
+            case EVENT_CLOSED -> {
                 if (closed != null) {
                     closed.invoke(this, new Event());
                 }
-                break;
-            case EVENT_RESIZED:
+            }
+            case EVENT_RESIZED -> {
                 if (resized != null) {
                     long e_size = e + sf_Event_size;
                     resized.invoke(this, new SizeEvent(
@@ -439,26 +439,26 @@ public class Window extends GlResource {
                         sf_Event_SizeEvent_getHeight(e_size)
                     ));
                 }
-                break;
-            case EVENT_LOST_FOCUS:
+            }
+            case EVENT_LOST_FOCUS -> {
                 if (lostFocus != null) {
                     lostFocus.invoke(this, new Event());
                 }
-                break;
-            case EVENT_GAINED_FOCUS:
+            }
+            case EVENT_GAINED_FOCUS -> {
                 if (gainedFocus != null) {
                     gainedFocus.invoke(this, new Event());
                 }
-                break;
-            case EVENT_TEXT_ENTERED:
+            }
+            case EVENT_TEXT_ENTERED -> {
                 if (textEntered != null) {
                     long e_text = e + sf_Event_text;
                     textEntered.invoke(this, new TextEvent(
                         sf_Event_TextEvent_getUnicode(e_text)
                     ));
                 }
-                break;
-            case EVENT_KEY_PRESSED:
+            }
+            case EVENT_KEY_PRESSED -> {
                 if (keyPressed != null) {
                     long e_key = e + sf_Event_key;
                     int e_key_code = sf_Event_KeyEvent_getCode(e_key);
@@ -470,8 +470,8 @@ public class Window extends GlResource {
                         sf_Event_KeyEvent_getSystem(e_key)
                     ));
                 }
-                break;
-            case EVENT_KEY_RELEASED:
+            }
+            case EVENT_KEY_RELEASED -> {
                 if (keyReleased != null) {
                     long e_key = e + sf_Event_key;
                     int e_key_code = sf_Event_KeyEvent_getCode(e_key);
@@ -483,8 +483,8 @@ public class Window extends GlResource {
                         sf_Event_KeyEvent_getSystem(e_key)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_WHEEL_MOVED:
+            }
+            case EVENT_MOUSE_WHEEL_MOVED -> {
                 if (mouseWheelMoved != null) {
                     long e_mouseWheel = e + sf_Event_mouseWheel;
                     mouseWheelMoved.invoke(this, new MouseWheelEvent(
@@ -493,8 +493,8 @@ public class Window extends GlResource {
                         sf_Event_MouseWheelEvent_getY(e_mouseWheel)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_WHEEL_SCROLLED:
+            }
+            case EVENT_MOUSE_WHEEL_SCROLLED -> {
                 if (mouseWheelScrolled != null) {
                     long e_mouseWheelScroll = e + sf_Event_mouseWheelScroll;
                     mouseWheelScrolled.invoke(this, new MouseWheelScrollEvent(
@@ -504,8 +504,8 @@ public class Window extends GlResource {
                         sf_Event_MouseWheelScrollEvent_getY(e_mouseWheelScroll)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_BUTTON_PRESSED:
+            }
+            case EVENT_MOUSE_BUTTON_PRESSED -> {
                 if (mouseButtonPressed != null) {
                     long e_mouseButton = e + sf_Event_mouseButton;
                     mouseButtonPressed.invoke(this, new MouseButtonEvent(
@@ -514,8 +514,8 @@ public class Window extends GlResource {
                         sf_Event_MouseButtonEvent_getY(e_mouseButton)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_BUTTON_RELEASED:
+            }
+            case EVENT_MOUSE_BUTTON_RELEASED -> {
                 if (mouseButtonReleased != null) {
                     long e_mouseButton = e + sf_Event_mouseButton;
                     mouseButtonReleased.invoke(this, new MouseButtonEvent(
@@ -524,8 +524,8 @@ public class Window extends GlResource {
                         sf_Event_MouseButtonEvent_getY(e_mouseButton)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_MOVED:
+            }
+            case EVENT_MOUSE_MOVED -> {
                 if (mouseMoved != null) {
                     long e_mouseMove = e + sf_Event_mouseMove;
                     mouseMoved.invoke(this, new MouseMoveEvent(
@@ -533,18 +533,18 @@ public class Window extends GlResource {
                         sf_Event_MouseMoveEvent_getY(e_mouseMove)
                     ));
                 }
-                break;
-            case EVENT_MOUSE_ENTERED:
+            }
+            case EVENT_MOUSE_ENTERED -> {
                 if (mouseEntered != null) {
                     mouseEntered.invoke(this, new Event());
                 }
-                break;
-            case EVENT_MOUSE_LEFT:
+            }
+            case EVENT_MOUSE_LEFT -> {
                 if (mouseLeft != null) {
                     mouseLeft.invoke(this, new Event());
                 }
-                break;
-            case EVENT_JOYSTICK_BUTTON_PRESSED:
+            }
+            case EVENT_JOYSTICK_BUTTON_PRESSED -> {
                 if (joystickButtonPressed != null) {
                     long e_joystickButton = e + sf_Event_joystickButton;
                     joystickButtonPressed.invoke(this, new JoystickButtonEvent(
@@ -552,8 +552,8 @@ public class Window extends GlResource {
                         sf_Event_JoystickButtonEvent_getButton(e_joystickButton)
                     ));
                 }
-                break;
-            case EVENT_JOYSTICK_BUTTON_RELEASED:
+            }
+            case EVENT_JOYSTICK_BUTTON_RELEASED -> {
                 if (joystickButtonReleased != null) {
                     long e_joystickButton = e + sf_Event_joystickButton;
                     joystickButtonReleased.invoke(this, new JoystickButtonEvent(
@@ -561,8 +561,8 @@ public class Window extends GlResource {
                         sf_Event_JoystickButtonEvent_getButton(e_joystickButton)
                     ));
                 }
-                break;
-            case EVENT_JOYSTICK_MOVED:
+            }
+            case EVENT_JOYSTICK_MOVED -> {
                 if (joystickMoved != null) {
                     long e_joystickMove = e + sf_Event_joystickMove;
                     joystickMoved.invoke(this, new JoystickMoveEvent(
@@ -571,24 +571,24 @@ public class Window extends GlResource {
                         sf_Event_JoystickMoveEvent_getPosition(e_joystickMove)
                     ));
                 }
-                break;
-            case EVENT_JOYSTICK_CONNECTED:
+            }
+            case EVENT_JOYSTICK_CONNECTED -> {
                 if (joystickConnected != null) {
                     long e_joystickConnect = e + sf_Event_joystickConnect;
                     joystickConnected.invoke(this, new JoystickConnectEvent(
                         sf_Event_JoystickConnectEvent_getJoystickId(e_joystickConnect)
                     ));
                 }
-                break;
-            case EVENT_JOYSTICK_DISCONNECTED:
+            }
+            case EVENT_JOYSTICK_DISCONNECTED -> {
                 if (joystickDisconnected != null) {
                     long e_joystickConnect = e + sf_Event_joystickConnect;
                     joystickDisconnected.invoke(this, new JoystickConnectEvent(
                         sf_Event_JoystickConnectEvent_getJoystickId(e_joystickConnect)
                     ));
                 }
-                break;
-            case EVENT_TOUCH_BEGAN:
+            }
+            case EVENT_TOUCH_BEGAN -> {
                 if (touchBegan != null) {
                     long e_touch = e + sf_Event_touch;
                     touchBegan.invoke(this, new TouchEvent(
@@ -597,8 +597,8 @@ public class Window extends GlResource {
                         sf_Event_TouchEvent_getY(e_touch)
                     ));
                 }
-                break;
-            case EVENT_TOUCH_MOVED:
+            }
+            case EVENT_TOUCH_MOVED -> {
                 if (touchMoved != null) {
                     long e_touch = e + sf_Event_touch;
                     touchMoved.invoke(this, new TouchEvent(
@@ -607,8 +607,8 @@ public class Window extends GlResource {
                         sf_Event_TouchEvent_getY(e_touch)
                     ));
                 }
-                break;
-            case EVENT_TOUCH_ENDED:
+            }
+            case EVENT_TOUCH_ENDED -> {
                 if (touchEnded != null) {
                     long e_touch = e + sf_Event_touch;
                     touchEnded.invoke(this, new TouchEvent(
@@ -617,8 +617,8 @@ public class Window extends GlResource {
                         sf_Event_TouchEvent_getY(e_touch)
                     ));
                 }
-                break;
-            case EVENT_SENSOR_CHANGED:
+            }
+            case EVENT_SENSOR_CHANGED -> {
                 if (sensorChanged != null) {
                     long e_sensor = e + sf_Event_sensor;
                     sensorChanged.invoke(this, new SensorEvent(
@@ -628,9 +628,7 @@ public class Window extends GlResource {
                         sf_Event_SensorEvent_getZ(e_sensor)
                     ));
                 }
-                break;
-            default:
-                break;
+            }
         }
     }
 }
