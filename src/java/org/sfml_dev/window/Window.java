@@ -27,6 +27,36 @@ public class Window extends GlResource {
 
     public EventHandler<MouseWheelEvent> mouseWheelMoved = null;
 
+    public EventHandler<MouseWheelScrollEvent> mouseWheelScrolled = null;
+
+    public EventHandler<MouseButtonEvent> mouseButtonPressed = null;
+
+    public EventHandler<MouseButtonEvent> mouseButtonReleased = null;
+
+    public EventHandler<MouseMoveEvent> mouseMoved = null;
+
+    public EventHandler<Event> mouseEntered = null;
+
+    public EventHandler<Event> mouseLeft = null;
+
+    public EventHandler<JoystickButtonEvent> joystickButtonPressed = null;
+    
+    public EventHandler<JoystickButtonEvent> joystickButtonReleased = null;
+
+    public EventHandler<JoystickMoveEvent> joystickMoved = null;
+
+    public EventHandler<JoystickConnectEvent> joystickConnected = null;
+    
+    public EventHandler<JoystickConnectEvent> joystickDisconnected = null;
+
+    public EventHandler<TouchEvent> touchBegan = null;
+
+    public EventHandler<TouchEvent> touchMoved = null;
+
+    public EventHandler<TouchEvent> touchEnded = null;
+
+    public EventHandler<SensorEvent> sensorChanged = null;
+
     public Window() {
         sf_Window_Window(getPtr(), this);
     }
@@ -461,6 +491,141 @@ public class Window extends GlResource {
                         sf_Event_MouseWheelEvent_getDelta(e_mouseWheel),
                         sf_Event_MouseWheelEvent_getX(e_mouseWheel),
                         sf_Event_MouseWheelEvent_getY(e_mouseWheel)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_WHEEL_SCROLLED:
+                if (mouseWheelScrolled != null) {
+                    long e_mouseWheelScroll = e + sf_Event_mouseWheelScroll;
+                    mouseWheelScrolled.invoke(this, new MouseWheelScrollEvent(
+                        Mouse.Wheel.values()[sf_Event_MouseWheelScrollEvent_getWheel(e_mouseWheelScroll)],
+                        sf_Event_MouseWheelScrollEvent_getDelta(e_mouseWheelScroll),
+                        sf_Event_MouseWheelScrollEvent_getX(e_mouseWheelScroll),
+                        sf_Event_MouseWheelScrollEvent_getY(e_mouseWheelScroll)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_BUTTON_PRESSED:
+                if (mouseButtonPressed != null) {
+                    long e_mouseButton = e + sf_Event_mouseButton;
+                    mouseButtonPressed.invoke(this, new MouseButtonEvent(
+                        Mouse.Button.values()[sf_Event_MouseButtonEvent_getButton(e_mouseButton)],
+                        sf_Event_MouseButtonEvent_getX(e_mouseButton),
+                        sf_Event_MouseButtonEvent_getY(e_mouseButton)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_BUTTON_RELEASED:
+                if (mouseButtonReleased != null) {
+                    long e_mouseButton = e + sf_Event_mouseButton;
+                    mouseButtonReleased.invoke(this, new MouseButtonEvent(
+                        Mouse.Button.values()[sf_Event_MouseButtonEvent_getButton(e_mouseButton)],
+                        sf_Event_MouseButtonEvent_getX(e_mouseButton),
+                        sf_Event_MouseButtonEvent_getY(e_mouseButton)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_MOVED:
+                if (mouseMoved != null) {
+                    long e_mouseMove = e + sf_Event_mouseMove;
+                    mouseMoved.invoke(this, new MouseMoveEvent(
+                        sf_Event_MouseMoveEvent_getX(e_mouseMove),
+                        sf_Event_MouseMoveEvent_getY(e_mouseMove)
+                    ));
+                }
+                break;
+            case EVENT_MOUSE_ENTERED:
+                if (mouseEntered != null) {
+                    mouseEntered.invoke(this, new Event());
+                }
+                break;
+            case EVENT_MOUSE_LEFT:
+                if (mouseLeft != null) {
+                    mouseLeft.invoke(this, new Event());
+                }
+                break;
+            case EVENT_JOYSTICK_BUTTON_PRESSED:
+                if (joystickButtonPressed != null) {
+                    long e_joystickButton = e + sf_Event_joystickButton;
+                    joystickButtonPressed.invoke(this, new JoystickButtonEvent(
+                        sf_Event_JoystickButtonEvent_getJoystickId(e_joystickButton),
+                        sf_Event_JoystickButtonEvent_getButton(e_joystickButton)
+                    ));
+                }
+                break;
+            case EVENT_JOYSTICK_BUTTON_RELEASED:
+                if (joystickButtonReleased != null) {
+                    long e_joystickButton = e + sf_Event_joystickButton;
+                    joystickButtonReleased.invoke(this, new JoystickButtonEvent(
+                        sf_Event_JoystickButtonEvent_getJoystickId(e_joystickButton),
+                        sf_Event_JoystickButtonEvent_getButton(e_joystickButton)
+                    ));
+                }
+                break;
+            case EVENT_JOYSTICK_MOVED:
+                if (joystickMoved != null) {
+                    long e_joystickMove = e + sf_Event_joystickMove;
+                    joystickMoved.invoke(this, new JoystickMoveEvent(
+                        sf_Event_JoystickMoveEvent_getJoystickId(e_joystickMove),
+                        Joystick.Axis.values()[sf_Event_JoystickMoveEvent_getAxis(e_joystickMove)],
+                        sf_Event_JoystickMoveEvent_getPosition(e_joystickMove)
+                    ));
+                }
+                break;
+            case EVENT_JOYSTICK_CONNECTED:
+                if (joystickConnected != null) {
+                    long e_joystickConnect = e + sf_Event_joystickConnect;
+                    joystickConnected.invoke(this, new JoystickConnectEvent(
+                        sf_Event_JoystickConnectEvent_getJoystickId(e_joystickConnect)
+                    ));
+                }
+                break;
+            case EVENT_JOYSTICK_DISCONNECTED:
+                if (joystickDisconnected != null) {
+                    long e_joystickConnect = e + sf_Event_joystickConnect;
+                    joystickDisconnected.invoke(this, new JoystickConnectEvent(
+                        sf_Event_JoystickConnectEvent_getJoystickId(e_joystickConnect)
+                    ));
+                }
+                break;
+            case EVENT_TOUCH_BEGAN:
+                if (touchBegan != null) {
+                    long e_touch = e + sf_Event_touch;
+                    touchBegan.invoke(this, new TouchEvent(
+                        sf_Event_TouchEvent_getFinger(e_touch),
+                        sf_Event_TouchEvent_getX(e_touch),
+                        sf_Event_TouchEvent_getY(e_touch)
+                    ));
+                }
+                break;
+            case EVENT_TOUCH_MOVED:
+                if (touchMoved != null) {
+                    long e_touch = e + sf_Event_touch;
+                    touchMoved.invoke(this, new TouchEvent(
+                        sf_Event_TouchEvent_getFinger(e_touch),
+                        sf_Event_TouchEvent_getX(e_touch),
+                        sf_Event_TouchEvent_getY(e_touch)
+                    ));
+                }
+                break;
+            case EVENT_TOUCH_ENDED:
+                if (touchEnded != null) {
+                    long e_touch = e + sf_Event_touch;
+                    touchEnded.invoke(this, new TouchEvent(
+                        sf_Event_TouchEvent_getFinger(e_touch),
+                        sf_Event_TouchEvent_getX(e_touch),
+                        sf_Event_TouchEvent_getY(e_touch)
+                    ));
+                }
+                break;
+            case EVENT_SENSOR_CHANGED:
+                if (sensorChanged != null) {
+                    long e_sensor = e + sf_Event_sensor;
+                    sensorChanged.invoke(this, new SensorEvent(
+                        Sensor.Type.values()[sf_Event_SensorEvent_getType(e_sensor)],
+                        sf_Event_SensorEvent_getX(e_sensor),
+                        sf_Event_SensorEvent_getY(e_sensor),
+                        sf_Event_SensorEvent_getZ(e_sensor)
                     ));
                 }
                 break;
