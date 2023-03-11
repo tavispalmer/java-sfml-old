@@ -6,4 +6,8 @@ public class TextEvent extends Event {
     public TextEvent(int unicode) {
         this.unicode = unicode;
     }
+
+    public String toString() {
+        return "{unicode=" + unicode + "}";
+    }
 }

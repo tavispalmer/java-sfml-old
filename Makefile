@@ -63,6 +63,7 @@ SFML_WINDOW_OFILES := \
 	build/cpp/SFML_Window.o
 
 SFML_GRAPHICS_CLASSFILES := \
+	build/java/org/sfml_dev/graphics/Color.class \
 	build/java/org/sfml_dev/graphics/FloatRect.class \
 	build/java/org/sfml_dev/graphics/IntRect.class
 

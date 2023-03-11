@@ -6,11 +6,22 @@ import org.sfml_dev.graphics.*;
 
 public class Main {
     public static void main(String[] args) {
-        Window window = new Window(new VideoMode(800, 600), "title");
+        Window window = new Window(
+            new VideoMode(
+                800,
+                600
+            ),
+            "title"
+        );
         window.setFramerateLimit(60);
+        
         window.closed = (w, e) -> w.close();
 
-        System.out.println(Joystick.getIdentification(0));
+        window.keyPressed = (w, e) -> {
+            if (e.code == Keyboard.Key.ESCAPE) {
+                w.close();
+            }
+        };
 
         while (window.isOpen()) {
             window.dispatchEvents();
