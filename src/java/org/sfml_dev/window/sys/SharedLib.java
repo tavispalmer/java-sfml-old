@@ -10,8 +10,8 @@ class SharedLib {
     public static void load() {
         if (!loaded) {
             try {
-                InputStream sharedLib = SharedLib.class.getResourceAsStream("/libsfml-java-window.so");
-                File tempFile = File.createTempFile("libsfml-java-window-", ".so");
+                InputStream sharedLib = SharedLib.class.getResourceAsStream("/libjava-sfml-window.so");
+                File tempFile = File.createTempFile("libjava-sfml-window-", ".so");
                 tempFile.deleteOnExit();
 
                 OutputStream tempFileStream = new FileOutputStream(tempFile);

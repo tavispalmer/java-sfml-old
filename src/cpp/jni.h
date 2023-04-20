@@ -51,6 +51,14 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_jni_GetByteArrayElements
 JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_jni_ReleaseByteArrayElements
   (JNIEnv *, jclass, jbyteArray, jlong, jint);
 
+/*
+ * Class:     org_sfml_dev_system_sys_jni
+ * Method:    SetFloatArrayRegion
+ * Signature: ([FIIJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_jni_SetFloatArrayRegion
+  (JNIEnv *, jclass, jfloatArray, jint, jint, jlong);
+
 #ifdef __cplusplus
 }
 #endif

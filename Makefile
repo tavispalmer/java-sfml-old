@@ -1,11 +1,11 @@
-JAVAC := javac
-JAR := jar
+JAVAC := /usr/lib/jvm/java-19-openjdk/bin/javac
+JAR := /usr/lib/jvm/java-19-openjdk/bin/jar
 JAVACFLAGS := -d build/java --source-path src/java
 
 CXX := g++
 CXXFLAGS := -fPIC -O2 \
-	-I/usr/lib/jvm/java-19-openjdk-amd64/include \
-	-I/usr/lib/jvm/java-19-openjdk-amd64/include/linux
+	-I/usr/lib/jvm/java-19-openjdk/include \
+	-I/usr/lib/jvm/java-19-openjdk/include/linux
 
 SFML_SYSTEM_CLASSFILES := \
 	build/java/org/sfml_dev/system/Clock.class \
@@ -65,7 +65,12 @@ SFML_WINDOW_OFILES := \
 SFML_GRAPHICS_CLASSFILES := \
 	build/java/org/sfml_dev/graphics/Color.class \
 	build/java/org/sfml_dev/graphics/FloatRect.class \
-	build/java/org/sfml_dev/graphics/IntRect.class
+	build/java/org/sfml_dev/graphics/IntRect.class \
+	build/java/org/sfml_dev/graphics/Transform.class \
+	build/java/org/sfml_dev/graphics/sys/SFML_Graphics.class \
+	build/java/org/sfml_dev/graphics/sys/SharedLib.class
+SFML_GRAPHICS_OFILES := \
+	build/cpp/SFML_Graphics.o
 
 .PHONY: all clean
 
@@ -74,13 +79,14 @@ all: test.jar libsfml-system.jar libsfml-window.jar libsfml-graphics.jar
 test.jar: build/java/Main.class resource/test-manifest.txt libsfml-system.jar libsfml-window.jar
 	$(JAR) cfm $@ resource/test-manifest.txt -C build/java Main.class
 
-libsfml-graphics.jar: $(SFML_GRAPHICS_CLASSFILES)
+libsfml-graphics.jar: $(SFML_GRAPHICS_CLASSFILES) build/libjava-sfml-graphics.so libsfml-system.jar libsfml-window.jar
 	$(JAR) cfm $@ resource/libsfml-graphics-manifest.txt \
 	$$(for FILE in $(SFML_GRAPHICS_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
-	done)
+	done) \
+	-C build libjava-sfml-graphics.so
 
-libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
+libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libjava-sfml-window.so libsfml-system.jar
 	$(JAR) cfm $@ resource/libsfml-window-manifest.txt \
 	$$(for FILE in $(SFML_WINDOW_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
@@ -93,20 +99,23 @@ libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libsfml-java-window.so
 	-C build/java org/sfml_dev/window/Mouse\$$Button.class \
 	-C build/java org/sfml_dev/window/Mouse\$$Wheel.class \
 	-C build/java org/sfml_dev/window/Sensor\$$Type.class \
-	-C build libsfml-java-window.so
+	-C build libjava-sfml-window.so
 
-libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libsfml-java-system.so
+libsfml-system.jar: $(SFML_SYSTEM_CLASSFILES) build/libjava-sfml-system.so
 	$(JAR) cf $@ \
 	$$(for FILE in $(SFML_SYSTEM_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
 	done) \
 	-C build/java org/sfml_dev/system/CppObject\$$State.class \
-	-C build libsfml-java-system.so
+	-C build libjava-sfml-system.so
 
-build/libsfml-java-window.so: $(SFML_WINDOW_OFILES)
+build/libjava-sfml-graphics.so: $(SFML_GRAPHICS_OFILES)
+	$(CXX) -shared -o $@ $^ -lsfml-graphics
+
+build/libjava-sfml-window.so: $(SFML_WINDOW_OFILES)
 	$(CXX) -shared -o $@ $^ -lsfml-window
 
-build/libsfml-java-system.so: $(SFML_SYSTEM_OFILES)
+build/libjava-sfml-system.so: $(SFML_SYSTEM_OFILES)
 	$(CXX) -shared -o $@ $^ -lsfml-system
 
 build/java/%.class: src/java/%.java

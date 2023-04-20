@@ -145,6 +145,22 @@ JNIEXPORT jint JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2u_1
 
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector2f_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2f_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Vector2f_Vector2f
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2f_1Vector2f
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
  * Method:    sf_Vector3f_sizeof
  * Signature: ()J
  */

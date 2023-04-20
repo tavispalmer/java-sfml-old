@@ -40,4 +40,5 @@ public class jni {
 
     public static native long GetByteArrayElements(byte[] array, long isCopy);
     public static native void ReleaseByteArrayElements(byte[] array, long elems, int mode);
+    public static native void SetFloatArrayRegion(float[] array, int start, int len, long buf);
 }

@@ -1,4 +1,4 @@
-package org.sfml_dev.system.sys;
+package org.sfml_dev.graphics.sys;
 
 import java.io.*;
 
@@ -10,8 +10,8 @@ class SharedLib {
     public static void load() {
         if (!loaded) {
             try {
-                InputStream sharedLib = SharedLib.class.getResourceAsStream("/libjava-sfml-system.so");
-                File tempFile = File.createTempFile("libjava-sfml-system-", ".so");
+                InputStream sharedLib = SharedLib.class.getResourceAsStream("/libjava-sfml-graphics.so");
+                File tempFile = File.createTempFile("libjava-sfml-graphics-", ".so");
                 tempFile.deleteOnExit();
 
                 OutputStream tempFileStream = new FileOutputStream(tempFile);

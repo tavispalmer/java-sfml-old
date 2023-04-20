@@ -40,3 +40,13 @@ void Java_org_sfml_1dev_system_sys_jni_ReleaseByteArrayElements(JNIEnv *env, jcl
         mode
     );
 }
+
+void Java_org_sfml_1dev_system_sys_jni_SetFloatArrayRegion(JNIEnv *env, jclass, jfloatArray array, jint start, jint len, jlong buf)
+{
+    env->SetFloatArrayRegion(
+        array,
+        start,
+        len,
+        reinterpret_cast<const jfloat *>(buf)
+    );
+}
