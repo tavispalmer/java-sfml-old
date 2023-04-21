@@ -6,11 +6,23 @@ public class SFML_Graphics {
     }
     private SFML_Graphics() {}
 
+    public static final long sf_Color_sizeof = sf_Color_sizeof();
     public static final long sf_FloatRect_sizeof = sf_FloatRect_sizeof();
     public static final long sf_Transform_sizeof = sf_Transform_sizeof();
     public static final long sf_Transform_Identity = sf_Transform_Identity();
     public static final long sf_Transformable_sizeof = sf_Transformable_sizeof();
+    public static final long sf_Vertex_sizeof = sf_Vertex_sizeof();
+    public static final long sf_Vertex_position = sf_Vertex_position();
+    public static final long sf_Vertex_color = sf_Vertex_color();
+    public static final long sf_Vertex_texCoords = sf_Vertex_texCoords();
+    public static final long sf_VertexArray_sizeof = sf_VertexArray_sizeof();
 
+    private static native long sf_Color_sizeof();
+    public static native void sf_Color_Color(long this_, byte red, byte green, byte blue, byte alpha);
+    public static native byte sf_Color_getR(long this_);
+    public static native byte sf_Color_getG(long this_);
+    public static native byte sf_Color_getB(long this_);
+    public static native byte sf_Color_getA(long this_);
     private static native long sf_FloatRect_sizeof();
     public static native void sf_FloatRect_FloatRect(long this_, float rectLeft, float rectTop, float rectWidth, float rectHeight);
     public static native float sf_FloatRect_getLeft(long this_);
@@ -62,4 +74,22 @@ public class SFML_Graphics {
     public static native void sf_Transformable_scale(long this_, long factor);
     public static native long sf_Transformable_getTransform(long this_);
     public static native long sf_Transformable_getInverseTransform(long this_);
+    private static native long sf_Vertex_sizeof();
+    private static native long sf_Vertex_position();
+    private static native long sf_Vertex_color();
+    private static native long sf_Vertex_texCoords();
+    public static native void sf_Vertex_Vertex(long this_, long thePosition, long theColor, long theTexCoords);
+    private static native long sf_VertexArray_sizeof();
+    public static native void sf_VertexArray_VertexArray(long this_);
+    public static native void sf_VertexArray_VertexArray(long this_, int type, long vertexCount);
+    public static native void sf_VertexArray_destructor(long this_);
+    public static native long sf_VertexArray_getVertexCount(long this_);
+    public static native long sf_VertexArray_operator_index(long this_, long index);
+    public static native void sf_VertexArray_clear(long this_);
+    public static native void sf_VertexArray_resize(long this_, long vertexCount);
+    public static native void sf_VertexArray_append(long this_, long vertex);
+    public static native void sf_VertexArray_setPrimitiveType(long this_, int type);
+    public static native int sf_VertexArray_getPrimitiveType(long this_);
+    public static native void sf_VertexArray_getBounds(long ret, long this_);
+    public static native void sf_VertexArray_draw(long this_, long target, long states, long states1);
 }
