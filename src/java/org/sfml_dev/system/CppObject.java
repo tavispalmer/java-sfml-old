@@ -19,6 +19,11 @@ public abstract class CppObject {
             this.destructor = destructor;
         }
 
+        State(long ptr) {
+            this.ptr = ptr;
+            this.destructor = null;
+        }
+
         public void run() {
             destructor.accept(ptr);
             operator_delete(ptr);
@@ -31,6 +36,10 @@ public abstract class CppObject {
         this.state = new State(sizeof(), getDestructor());
         Cleaner.Cleanable cleanable = CLEANER.register(this, state);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> cleanable.clean()));
+    }
+
+    public CppObject(long ptr) {
+        this.state = new State(ptr);
     }
 
     public final long getPtr() {

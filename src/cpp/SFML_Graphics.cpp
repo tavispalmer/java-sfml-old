@@ -41,6 +41,11 @@ jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1sizeof(JNIEn
     return static_cast<jlong>(sizeof(sf::Transform));
 }
 
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Identity(JNIEnv *, jclass)
+{
+    return reinterpret_cast<jlong>(&sf::Transform::Identity);
+}
+
 void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Transform__J(JNIEnv *, jclass, jlong this_)
 {
     new (reinterpret_cast<void *>(this_)) sf::Transform;
@@ -59,6 +64,11 @@ void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Transform__JF
         static_cast<float>(a21),
         static_cast<float>(a22)
     );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Transform__JJ(JNIEnv *, jclass, jlong this_, jlong copy)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Transform(*reinterpret_cast<sf::Transform *>(copy));
 }
 
 jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1getMatrix(JNIEnv *, jclass, jlong this_)
@@ -175,4 +185,124 @@ jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transf
 jboolean Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1eq_1_1sf_1Transform_1_1sf_1Transform(JNIEnv *, jclass, jlong left, jlong right)
 {
     return static_cast<jboolean>(*reinterpret_cast<sf::Transform *>(left) == *reinterpret_cast<sf::Transform *>(right));
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Transformable));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable(JNIEnv *, jclass, jlong this_)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Transformable;
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1destructor(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->~Transformable();
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setPosition__JFF(JNIEnv *, jclass, jlong this_, jfloat x, jfloat y)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setPosition(
+        static_cast<float>(x),
+        static_cast<float>(y)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setPosition__JJ(JNIEnv *, jclass, jlong this_, jlong position)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setPosition(*reinterpret_cast<sf::Vector2f *>(position));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setRotation(JNIEnv *, jclass, jlong this_, jfloat angle)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setRotation(static_cast<float>(angle));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setScale__JFF(JNIEnv *, jclass, jlong this_, jfloat factorX, jfloat factorY)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setScale(
+        static_cast<float>(factorX),
+        static_cast<float>(factorY)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setScale__JJ(JNIEnv *, jclass, jlong this_, jlong factors)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setScale(*reinterpret_cast<sf::Vector2f *>(factors));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setOrigin__JFF(JNIEnv *, jclass, jlong this_, jfloat x, jfloat y)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setOrigin(
+        static_cast<float>(x),
+        static_cast<float>(y)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setOrigin__JJ(JNIEnv *, jclass, jlong this_, jlong origin)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->setOrigin(*reinterpret_cast<sf::Vector2f *>(origin));
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getPosition(JNIEnv *, jclass, jlong this_)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getPosition());
+}
+
+jfloat Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getRotation(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Transformable *>(this_)->getRotation());
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getScale(JNIEnv *, jclass, jlong this_)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getScale());
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getOrigin(JNIEnv *, jclass, jlong this_)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getOrigin());
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1move__JFF(JNIEnv *, jclass, jlong this_, jfloat offsetX, jfloat offsetY)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->move(
+        static_cast<float>(offsetX),
+        static_cast<float>(offsetY)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1move__JJ(JNIEnv *, jclass, jlong this_, jlong offset)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->move(*reinterpret_cast<sf::Vector2f *>(offset));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1rotate(JNIEnv *, jclass, jlong this_, jfloat angle)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->rotate(static_cast<float>(angle));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1scale__JFF(JNIEnv *, jclass, jlong this_, jfloat factorX, jfloat factorY)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->scale(
+        static_cast<float>(factorX),
+        static_cast<float>(factorY)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1scale__JJ(JNIEnv *, jclass, jlong this_, jlong factor)
+{
+    reinterpret_cast<sf::Transformable *>(this_)->scale(*reinterpret_cast<sf::Vector2f *>(factor));
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getTransform(JNIEnv *, jclass, jlong this_)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getTransform());
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getInverseTransform(JNIEnv *, jclass, jlong this_)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getInverseTransform());
 }

@@ -1,11 +1,11 @@
-JAVAC := /usr/lib/jvm/java-19-openjdk/bin/javac
-JAR := /usr/lib/jvm/java-19-openjdk/bin/jar
+JAVAC := /usr/lib/jvm/java-20-openjdk/bin/javac
+JAR := /usr/lib/jvm/java-20-openjdk/bin/jar
 JAVACFLAGS := -d build/java --source-path src/java
 
 CXX := g++
 CXXFLAGS := -fPIC -O2 \
-	-I/usr/lib/jvm/java-19-openjdk/include \
-	-I/usr/lib/jvm/java-19-openjdk/include/linux
+	-I/usr/lib/jvm/java-20-openjdk/include \
+	-I/usr/lib/jvm/java-20-openjdk/include/linux
 
 SFML_SYSTEM_CLASSFILES := \
 	build/java/org/sfml_dev/system/Clock.class \
@@ -67,6 +67,7 @@ SFML_GRAPHICS_CLASSFILES := \
 	build/java/org/sfml_dev/graphics/FloatRect.class \
 	build/java/org/sfml_dev/graphics/IntRect.class \
 	build/java/org/sfml_dev/graphics/Transform.class \
+	build/java/org/sfml_dev/graphics/Transformable.class \
 	build/java/org/sfml_dev/graphics/sys/SFML_Graphics.class \
 	build/java/org/sfml_dev/graphics/sys/SharedLib.class
 SFML_GRAPHICS_OFILES := \
@@ -84,6 +85,7 @@ libsfml-graphics.jar: $(SFML_GRAPHICS_CLASSFILES) build/libjava-sfml-graphics.so
 	$$(for FILE in $(SFML_GRAPHICS_CLASSFILES); \
 		do echo -C build/java $$(expr substr $$FILE 12 $$(expr $$(expr length $$FILE) - 11)); \
 	done) \
+	-C build/java org/sfml_dev/graphics/Transform\$$ImmutableTransform.class \
 	-C build libjava-sfml-graphics.so
 
 libsfml-window.jar: $(SFML_WINDOW_CLASSFILES) build/libjava-sfml-window.so libsfml-system.jar

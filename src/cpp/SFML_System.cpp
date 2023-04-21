@@ -107,6 +107,16 @@ void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2f_1Vector2f(JNIEnv *,
     );
 }
 
+jfloat Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2f_1getX(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Vector2f *>(this_)->x);
+}
+
+jfloat Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector2f_1getY(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jfloat>(reinterpret_cast<sf::Vector2f *>(this_)->y);
+}
+
 jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Vector3f_1sizeof(JNIEnv *, jclass)
 {
     return static_cast<jlong>(sizeof(sf::Vector3f));

@@ -8,9 +8,9 @@ import static org.sfml_dev.system.sys.new_.*;
 import static org.sfml_dev.system.sys.SFML_System.*;
 import static org.sfml_dev.graphics.sys.SFML_Graphics.*;
 
-public class Transform extends CppObject {
+public class Transform extends CppObject implements Cloneable {
     
-    public static final Transform IDENTITY = new Transform();
+    public static final Transform IDENTITY = new ImmutableTransform(sf_Transform_Identity);
 
     public Transform() {
         sf_Transform_Transform(getPtr());
@@ -20,7 +20,11 @@ public class Transform extends CppObject {
         sf_Transform_Transform(getPtr(), a00, a01, a02, a10, a11, a12, a20, a21, a22);
     }
 
-    private Transform(boolean dummy) {
+    Transform(boolean dummy) {
+    }
+
+    private Transform(long ptr) {
+        super(ptr);
     }
 
     public float[] getMatrix() {
@@ -183,7 +187,60 @@ public class Transform extends CppObject {
         return false;
     }
 
+    public Transform clone() {
+        Transform transform = new Transform(false);
+        sf_Transform_Transform(transform.getPtr(), getPtr());
+        return transform;
+    }
+
     protected long sizeof() {
         return sf_Transform_sizeof;
+    }
+
+    private static class ImmutableTransform extends Transform {
+
+        public ImmutableTransform(long ptr) {
+            super(ptr);
+        }
+
+        public Transform combine(Transform transform) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform translate(float x, float y) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform translate(Vector2f offset) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform rotate(float angle) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform rotate(float angle, float centerX, float centerY) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform rotate(float angle, Vector2f center) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform scale(float scaleX, float scaleY) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform scale(float scaleX, float scaleY, float centerX, float centerY) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform scale(Vector2f factors) {
+            throw new UnsupportedOperationException();
+        }
+
+        public Transform scale(Vector2f factors, Vector2f center) {
+            throw new UnsupportedOperationException();
+        }
     }
 }

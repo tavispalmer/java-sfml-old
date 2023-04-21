@@ -7,9 +7,6 @@ import org.sfml_dev.graphics.*;
 public class Main {
     public static void main(String[] args) {
 
-        Transform transform = new Transform();
-        System.out.println(Arrays.toString(transform.getMatrix()));
-
         Window window = new Window(
             new VideoMode(
                 800,

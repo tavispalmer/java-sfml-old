@@ -65,6 +65,14 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Trans
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transform_Identity
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Identity
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
  * Method:    sf_Transform_Transform
  * Signature: (J)V
  */
@@ -78,6 +86,14 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transf
  */
 JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Transform__JFFFFFFFFF
   (JNIEnv *, jclass, jlong, jfloat, jfloat, jfloat, jfloat, jfloat, jfloat, jfloat, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transform_Transform
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1Transform__JJ
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
@@ -222,6 +238,174 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_
  */
 JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1eq_1_1sf_1Transform_1_1sf_1Transform
   (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_Transformable
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setPosition
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setPosition__JFF
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setPosition
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setPosition__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setRotation
+ * Signature: (JF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setRotation
+  (JNIEnv *, jclass, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setScale
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setScale__JFF
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setScale
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setScale__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setOrigin
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setOrigin__JFF
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_setOrigin
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1setOrigin__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getPosition
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getPosition
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getRotation
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getRotation
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getScale
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getScale
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getOrigin
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getOrigin
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_move
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1move__JFF
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_move
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1move__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_rotate
+ * Signature: (JF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1rotate
+  (JNIEnv *, jclass, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_scale
+ * Signature: (JFF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1scale__JFF
+  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_scale
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1scale__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getTransform
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getTransform
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_getInverseTransform
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getInverseTransform
+  (JNIEnv *, jclass, jlong);
 
 #ifdef __cplusplus
 }

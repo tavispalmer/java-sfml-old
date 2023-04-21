@@ -32,6 +32,8 @@ public class SFML_System {
     public static native int sf_Vector2u_getY(long this_);
     private static native long sf_Vector2f_sizeof();
     public static native void sf_Vector2f_Vector2f(long this_, float x, float y);
+    public static native float sf_Vector2f_getX(long this_);
+    public static native float sf_Vector2f_getY(long this_);
     private static native long sf_Vector3f_sizeof();
     public static native float sf_Vector3f_getX(long this_);
     public static native float sf_Vector3f_getY(long this_);
