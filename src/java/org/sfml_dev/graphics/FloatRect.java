@@ -2,7 +2,7 @@ package org.sfml_dev.graphics;
 
 import org.sfml_dev.system.Vector2f;
 
-public class FloatRect {
+public class FloatRect implements Cloneable {
     
     public float left;
     public float top;
@@ -95,6 +95,10 @@ public class FloatRect {
                    (top == floatRect.top) && (height == floatRect.height);
         }
         return false;
+    }
+
+    public FloatRect clone() {
+        return new FloatRect(this.left, this.top, this.width, this.height);
     }
 
     public String toString() {

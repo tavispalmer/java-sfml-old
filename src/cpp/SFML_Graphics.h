@@ -252,8 +252,16 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Trans
  * Method:    sf_Transformable_Transformable
  * Signature: (J)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable__J
   (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Transformable_Transformable
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable__JJ
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics

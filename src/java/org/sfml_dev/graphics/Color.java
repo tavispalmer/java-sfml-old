@@ -1,6 +1,6 @@
 package org.sfml_dev.graphics;
 
-public class Color {
+public class Color implements Cloneable {
 
     public static final Color BLACK = new Color(0, 0, 0);
     public static final Color WHITE = new Color(255, 255, 255);
@@ -75,6 +75,10 @@ public class Color {
                          (byte)((((int)this.g) & 0xff) * (((int)val.g) & 0xff) / 255),
                          (byte)((((int)this.b) & 0xff) * (((int)val.b) & 0xff) / 255),
                          (byte)((((int)this.a) & 0xff) * (((int)val.a) & 0xff) / 255));
+    }
+
+    public Color clone() {
+        return new Color(this.r, this.g, this.b, this.a);
     }
 
     public String toString() {

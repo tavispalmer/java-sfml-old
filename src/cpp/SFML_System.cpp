@@ -6,9 +6,14 @@ jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1sizeof(JNIEnv *, jcl
     return static_cast<jlong>(sizeof(sf::Clock));
 }
 
-void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock(JNIEnv *, jclass, jlong this_)
+void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock__J(JNIEnv *, jclass, jlong this_)
 {
     new (reinterpret_cast<void *>(this_)) sf::Clock;
+}
+
+void Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock__JJ(JNIEnv *, jclass, jlong this_, jlong copy)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Clock(*reinterpret_cast<sf::Clock *>(copy));
 }
 
 jlong Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1getElapsedTime(JNIEnv *, jclass, jlong this_)

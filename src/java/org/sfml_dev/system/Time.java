@@ -1,6 +1,6 @@
 package org.sfml_dev.system;
 
-public class Time implements Comparable<Time> {
+public class Time implements Comparable<Time>, Cloneable {
 
     public static final Time ZERO = new Time();
 
@@ -83,5 +83,9 @@ public class Time implements Comparable<Time> {
 
     public Time remainder(Time val) {
         return Time.fromMicroseconds(this.asMicroseconds() % val.asMicroseconds());
+    }
+
+    public Time clone() {
+        return new Time(this.microseconds);
     }
 }

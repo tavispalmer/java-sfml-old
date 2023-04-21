@@ -8,10 +8,13 @@ import static org.sfml_dev.system.sys.new_.*;
 import static org.sfml_dev.system.sys.SFML_System.*;
 import static org.sfml_dev.graphics.sys.SFML_Graphics.*;
 
-public class Transformable extends CppObject {
+public class Transformable extends CppObject implements Cloneable {
 
     public Transformable() {
         sf_Transformable_Transformable(getPtr());
+    }
+
+    private Transformable(boolean dummy) {
     }
 
     public void setPosition(float x, float y) {
@@ -121,6 +124,12 @@ public class Transformable extends CppObject {
             sf_Transformable_getInverseTransform(getPtr())
         );
         return inverseTransform;
+    }
+
+    public Transformable clone() {
+        Transformable transformable = new Transformable(false);
+        sf_Transformable_Transformable(transformable.getPtr(), getPtr());
+        return transformable;
     }
 
     protected long sizeof() {

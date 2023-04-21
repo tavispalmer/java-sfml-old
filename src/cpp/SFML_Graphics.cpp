@@ -192,9 +192,14 @@ jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1sizeof(J
     return static_cast<jlong>(sizeof(sf::Transformable));
 }
 
-void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable(JNIEnv *, jclass, jlong this_)
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable__J(JNIEnv *, jclass, jlong this_)
 {
     new (reinterpret_cast<void *>(this_)) sf::Transformable;
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1Transformable__JJ(JNIEnv *, jclass, jlong this_, jlong copy)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Transformable(*reinterpret_cast<sf::Transformable *>(copy));
 }
 
 void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1destructor(JNIEnv *, jclass, jlong this_)

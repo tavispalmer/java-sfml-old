@@ -1,6 +1,6 @@
 package org.sfml_dev.system;
 
-public class Vector3f {
+public class Vector3f implements Cloneable {
 
     /** X coordinate of the vector */
     public float x;
@@ -48,6 +48,10 @@ public class Vector3f {
             return (this.x == vector3f.x) && (this.y == vector3f.y) && (this.z == vector3f.z);
         }
         return false;
+    }
+
+    public Vector3f clone() {
+        return new Vector3f(this.x, this.y, this.z);
     }
 
     public String toString() {

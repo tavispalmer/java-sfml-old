@@ -1,6 +1,6 @@
 package org.sfml_dev.system;
 
-public class Vector2f {
+public class Vector2f implements Cloneable {
 
     /** X coordinate of the vector */
     public float x;
@@ -43,6 +43,10 @@ public class Vector2f {
             return (this.x == vector2f.x) && (this.y == vector2f.y);
         }
         return false;
+    }
+
+    public Vector2f clone() {
+        return new Vector2f(this.x, this.y);
     }
 
     public String toString() {

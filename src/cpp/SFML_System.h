@@ -20,8 +20,16 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1si
  * Method:    sf_Clock_Clock
  * Signature: (J)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock__J
   (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Clock_Clock
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clock__JJ
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System

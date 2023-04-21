@@ -42,6 +42,7 @@ public class SFML_Graphics {
     public static native boolean operator_eq__sf_Transform__sf_Transform(long left, long right);
     private static native long sf_Transformable_sizeof();
     public static native void sf_Transformable_Transformable(long this_);
+    public static native void sf_Transformable_Transformable(long this_, long copy);
     public static native void sf_Transformable_destructor(long this_);
     public static native void sf_Transformable_setPosition(long this_, float x, float y);
     public static native void sf_Transformable_setPosition(long this_, long position);

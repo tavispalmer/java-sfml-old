@@ -2,7 +2,7 @@ package org.sfml_dev.graphics;
 
 import org.sfml_dev.system.Vector2i;
 
-public class IntRect {
+public class IntRect implements Cloneable {
     
     public int left;
     public int top;
@@ -95,6 +95,10 @@ public class IntRect {
                    (top == intRect.top) && (height == intRect.height);
         }
         return false;
+    }
+
+    public IntRect clone() {
+        return new IntRect(this.left, this.top, this.width, this.height);
     }
 
     public String toString() {
