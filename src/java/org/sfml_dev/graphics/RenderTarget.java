@@ -1,5 +1,9 @@
 package org.sfml_dev.graphics;
 
-public class RenderTarget {
-    
+import org.sfml_dev.system.CppObject;
+
+public class RenderTarget extends CppObject {
+    protected long sizeof() {
+        return 1;
+    }
 }

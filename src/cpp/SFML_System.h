@@ -34,18 +34,18 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1Clo
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System
  * Method:    sf_Clock_getElapsedTime
- * Signature: (J)J
+ * Signature: (JJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1getElapsedTime
-  (JNIEnv *, jclass, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1getElapsedTime
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System
  * Method:    sf_Clock_restart
- * Signature: (J)J
+ * Signature: (JJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1restart
-  (JNIEnv *, jclass, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Clock_1restart
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System
@@ -86,6 +86,174 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1fr
  */
 JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1String_1toUtf16
   (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_Zero
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1Zero
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_Time
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1Time__J
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_Time
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1Time__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_asSeconds
+ * Signature: (J)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1asSeconds
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_asMilliseconds
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1asMilliseconds
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_Time_asMicroseconds
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1Time_1asMicroseconds
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_seconds
+ * Signature: (JF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1seconds
+  (JNIEnv *, jclass, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_milliseconds
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1milliseconds
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    sf_microseconds
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_sf_1microseconds
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_eq__sf_Time
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1eq_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_lt__sf_Time
+ * Signature: (JJ)Z
+ */
+JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1lt_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_neg__sf_Time
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1neg_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_add__sf_Time
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1add_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_sub__sf_Time
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1sub_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_mul__sf_Time
+ * Signature: (JJF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1mul_1_1sf_1Time__JJF
+  (JNIEnv *, jclass, jlong, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_mul__sf_Time
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1mul_1_1sf_1Time__JJJ
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_div__sf_Time
+ * Signature: (JJF)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1div_1_1sf_1Time__JJF
+  (JNIEnv *, jclass, jlong, jlong, jfloat);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_div__sf_Time
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1div_1_1sf_1Time__JJJ
+  (JNIEnv *, jclass, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_div__sf_Time
+ * Signature: (JJ)F
+ */
+JNIEXPORT jfloat JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1div_1_1sf_1Time__JJ
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_system_sys_SFML_System
+ * Method:    operator_rem__sf_Time
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_system_sys_SFML_1System_operator_1rem_1_1sf_1Time
+  (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_system_sys_SFML_System

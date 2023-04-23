@@ -1,91 +1,122 @@
 package org.sfml_dev.system;
 
-public class Time implements Comparable<Time>, Cloneable {
+import static org.sfml_dev.system.sys.SFML_System.*;
 
-    public static final Time ZERO = new Time();
+public class Time extends CppObject implements Comparable<Time>, Cloneable {
 
-    private long microseconds;
+    public static final Time ZERO = new Time(sf_Time_Zero);
 
     public Time() {
-        this.microseconds = 0;
+        sf_Time_Time(getPtr());
     }
 
-    private Time(long microseconds) {
-        this.microseconds = microseconds;
+    Time(boolean dummy) {
+    }
+
+    private Time(long ptr) {
+        super(ptr);
     }
 
     public float asSeconds() {
-        return microseconds / 1000000.f;
+        return sf_Time_asSeconds(getPtr());
     }
 
     public int asMilliseconds() {
-        return (int)(microseconds / 1000);
+        return sf_Time_asMilliseconds(getPtr());
     }
 
     public long asMicroseconds() {
-        return microseconds;
+        return sf_Time_asMicroseconds(getPtr());
     }
     
     public static Time fromSeconds(float amount) {
-        return new Time((long)(amount * 1000000));
+        Time time = new Time(false);
+        sf_seconds(time.getPtr(), amount);
+        return time;
     }
 
     public static Time fromMilliseconds(int amount) {
-        return new Time((long)amount * 1000);
+        Time time = new Time(false);
+        sf_milliseconds(time.getPtr(), amount);
+        return time;
     }
 
     public static Time fromMicroseconds(long amount) {
-        return new Time(amount);
+        Time time = new Time(false);
+        sf_microseconds(time.getPtr(), amount);
+        return time;
     }
 
     public boolean equals(Object val) {
         if (val instanceof Time time) {
-            return this.asMicroseconds() == time.asMicroseconds();
+            return operator_eq__sf_Time(getPtr(), time.getPtr());
         }
         return false;
     }
 
     public int compareTo(Time val) {
-        return Long.compare(this.asMicroseconds(), val.asMicroseconds());
+        return operator_lt__sf_Time(getPtr(), val.getPtr()) ? -1 : (operator_eq__sf_Time(getPtr(), val.getPtr()) ? 0 : 1);
     }
 
     public Time negate() {
-        return Time.fromMicroseconds(-this.asMicroseconds());
+        Time time = new Time(false);
+        operator_neg__sf_Time(time.getPtr(), getPtr());
+        return time;
     }
 
     public Time add(Time val) {
-        return Time.fromMicroseconds(this.asMicroseconds() + val.asMicroseconds());
+        Time time = new Time(false);
+        operator_add__sf_Time(time.getPtr(), getPtr(), val.getPtr());
+        return time;
     }
 
     public Time subtract(Time val) {
-        return Time.fromMicroseconds(this.asMicroseconds() - val.asMicroseconds());
+        Time time = new Time(false);
+        operator_sub__sf_Time(time.getPtr(), getPtr(), val.getPtr());
+        return time;
     }
 
     public Time multiply(float val) {
-        return Time.fromSeconds(this.asSeconds() * val);
+        Time time = new Time(false);
+        operator_mul__sf_Time(time.getPtr(), getPtr(), val);
+        return time;
     }
 
     public Time multiply(long val) {
-        return Time.fromMicroseconds(this.asMicroseconds() * val);
+        Time time = new Time(false);
+        operator_mul__sf_Time(time.getPtr(), getPtr(), val);
+        return time;
     }
 
     public Time divide(float val) {
-        return Time.fromSeconds(this.asSeconds() / val);
+        Time time = new Time(false);
+        operator_div__sf_Time(time.getPtr(), getPtr(), val);
+        return time;
     }
 
     public Time divide(long val) {
-        return Time.fromMicroseconds(this.asMicroseconds() / val);
+        Time time = new Time(false);
+        operator_div__sf_Time(time.getPtr(), getPtr(), val);
+        return time;
     }
 
     public float divide(Time val) {
-        return this.asSeconds() / val.asSeconds();
+        return operator_div__sf_Time(getPtr(), val.getPtr());
     }
 
     public Time remainder(Time val) {
-        return Time.fromMicroseconds(this.asMicroseconds() % val.asMicroseconds());
+        Time time = new Time(false);
+        operator_rem__sf_Time(time.getPtr(), getPtr(), val.getPtr());
+        return time;
     }
 
     public Time clone() {
-        return new Time(this.microseconds);
+        Time time = new Time(false);
+        sf_Time_Time(time.getPtr(), getPtr());
+        return time;
+    }
+
+    protected long sizeof() {
+        return sf_Time_sizeof;
     }
 }

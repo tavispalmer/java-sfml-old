@@ -12,11 +12,15 @@ public class Clock extends CppObject implements Cloneable {
     }
 
     public Time getElapsedTime() {
-        return Time.fromMicroseconds(sf_Clock_getElapsedTime(getPtr()));
+        Time time = new Time(false);
+        sf_Clock_getElapsedTime(time.getPtr(), getPtr());
+        return time;
     }
 
     public Time restart() {
-        return Time.fromMicroseconds(sf_Clock_restart(getPtr()));
+        Time time = new Time(false);
+        sf_Clock_restart(time.getPtr(), getPtr());
+        return time;
     }
 
     public Clock clone() {

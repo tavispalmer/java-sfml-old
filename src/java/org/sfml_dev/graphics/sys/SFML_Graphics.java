@@ -91,5 +91,5 @@ public class SFML_Graphics {
     public static native void sf_VertexArray_setPrimitiveType(long this_, int type);
     public static native int sf_VertexArray_getPrimitiveType(long this_);
     public static native void sf_VertexArray_getBounds(long ret, long this_);
-    public static native void sf_VertexArray_draw(long this_, long target, long states, long states1);
+    public static native void sf_VertexArray_draw(long this_, long target, long states, long states1, long states2, long states3, long states4, long states5, long states6, long states7, long states8, long states9, long states10, long states11, long states12);
 }
