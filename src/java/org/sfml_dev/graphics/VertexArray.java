@@ -120,7 +120,7 @@ public class VertexArray extends CppObject implements Drawable {
     }
 
     public void draw(RenderTarget target, RenderStates states) {
-        sf_VertexArray_draw(getPtr(), target.getPtr(), 0, 0);
+        // TODO
     }
 
     protected long sizeof() {

@@ -36,8 +36,8 @@ public class SFML_Graphics {
     public static native void sf_Transform_Transform(long this_, long copy);
     public static native long sf_Transform_getMatrix(long this_);
     public static native void sf_Transform_getInverse(long ret, long this_);
-    public static native long sf_Transform_transformPoint(long this_, float x, float y);
-    public static native long sf_Transform_transformPoint(long this_, long point);
+    public static native void sf_Transform_transformPoint(long ret, long this_, float x, float y);
+    public static native void sf_Transform_transformPoint(long ret, long this_, long point);
     public static native void sf_Transform_transformRect(long ret, long this_, long rectangle);
     public static native long sf_Transform_combine(long this_, long transform);
     public static native long sf_Transform_translate(long this_, float x, float y);
@@ -50,7 +50,7 @@ public class SFML_Graphics {
     public static native long sf_Transform_scale(long this_, long factors);
     public static native long sf_Transform_scale(long this_, long factors, long center);
     public static native void operator_mul__sf_Transform__sf_Transform(long ret, long left, long right);
-    public static native long operator_mul__sf_Transform__sf_Vector2f(long left, long right);
+    public static native void operator_mul__sf_Transform__sf_Vector2f(long ret, long left, long right);
     public static native boolean operator_eq__sf_Transform__sf_Transform(long left, long right);
     private static native long sf_Transformable_sizeof();
     public static native void sf_Transformable_Transformable(long this_);
@@ -91,5 +91,5 @@ public class SFML_Graphics {
     public static native void sf_VertexArray_setPrimitiveType(long this_, int type);
     public static native int sf_VertexArray_getPrimitiveType(long this_);
     public static native void sf_VertexArray_getBounds(long ret, long this_);
-    public static native void sf_VertexArray_draw(long this_, long target, long states, long states1, long states2, long states3, long states4, long states5, long states6, long states7, long states8, long states9, long states10, long states11, long states12);
+    public static native void sf_VertexArray_draw(long this_, long target, long states);
 }

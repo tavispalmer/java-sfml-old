@@ -1,6 +1,42 @@
 #include "SFML_Graphics.h"
 #include <SFML/Graphics.hpp>
 
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Color));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1Color(JNIEnv *, jclass, jlong this_, jbyte red, jbyte green, jbyte blue, jbyte alpha)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Color(
+        static_cast<sf::Uint8>(red),
+        static_cast<sf::Uint8>(green),
+        static_cast<sf::Uint8>(blue),
+        static_cast<sf::Uint8>(alpha)
+    );
+}
+
+jbyte Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getR(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jbyte>(reinterpret_cast<sf::Color *>(this_)->r);
+}
+
+jbyte Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getG(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jbyte>(reinterpret_cast<sf::Color *>(this_)->g);
+}
+
+jbyte Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getB(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jbyte>(reinterpret_cast<sf::Color *>(this_)->b);
+}
+
+jbyte Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getA(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jbyte>(reinterpret_cast<sf::Color *>(this_)->a);
+}
+
+
 jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1FloatRect_1sizeof(JNIEnv *, jclass)
 {
     return static_cast<jlong>(sizeof(sf::FloatRect));
@@ -81,19 +117,23 @@ void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1getInverse(JN
     new (reinterpret_cast<void *>(ret)) sf::Transform(reinterpret_cast<sf::Transform *>(this_)->getInverse());
 }
 
-jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JFF(JNIEnv *, jclass, jlong this_, jfloat x, jfloat y)
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJFF(JNIEnv *, jclass, jlong ret, jlong this_, jfloat x, jfloat y)
 {
-    sf::Vector2f ret = reinterpret_cast<sf::Transform *>(this_)->transformPoint(
-        static_cast<float>(x),
-        static_cast<float>(y)
+    new (reinterpret_cast<void *>(ret)) sf::Vector2f(
+        reinterpret_cast<sf::Transform *>(this_)->transformPoint(
+            static_cast<float>(x),
+            static_cast<float>(y)
+        )
     );
-    return *reinterpret_cast<jlong *>(&ret);
 }
 
-jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJ(JNIEnv *, jclass, jlong this_, jlong point)
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJJ(JNIEnv *, jclass, jlong ret, jlong this_, jlong point)
 {
-    sf::Vector2f ret = reinterpret_cast<sf::Transform *>(this_)->transformPoint(*reinterpret_cast<sf::Vector2f *>(point));
-    return *reinterpret_cast<jlong *>(&ret);
+    new (reinterpret_cast<void *>(ret)) sf::Vector2f(
+        reinterpret_cast<sf::Transform *>(this_)->transformPoint(
+            *reinterpret_cast<sf::Vector2f *>(point)
+        )
+    );
 }
 
 void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformRect(JNIEnv *, jclass, jlong ret, jlong this_, jlong rectangle)
@@ -176,10 +216,9 @@ void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transfo
     new (reinterpret_cast<void *>(ret)) sf::Transform(*reinterpret_cast<sf::Transform *>(left) * *reinterpret_cast<sf::Transform *>(right));
 }
 
-jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transform_1_1sf_1Vector2f(JNIEnv *, jclass, jlong left, jlong right)
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transform_1_1sf_1Vector2f(JNIEnv *, jclass, jlong ret, jlong left, jlong right)
 {
-    sf::Vector2f ret = *reinterpret_cast<sf::Transform *>(left) * *reinterpret_cast<sf::Vector2f *>(right);
-    return *reinterpret_cast<jlong *>(&ret);
+    new (reinterpret_cast<void *>(ret)) sf::Vector2f(*reinterpret_cast<sf::Transform *>(left) * *reinterpret_cast<sf::Vector2f *>(right));
 }
 
 jboolean Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1eq_1_1sf_1Transform_1_1sf_1Transform(JNIEnv *, jclass, jlong left, jlong right)
@@ -310,4 +349,104 @@ jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getTrans
 jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getInverseTransform(JNIEnv *, jclass, jlong this_)
 {
     return reinterpret_cast<jlong>(&reinterpret_cast<sf::Transformable *>(this_)->getInverseTransform());
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::Vertex));
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1position(JNIEnv *, jclass)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Vertex *>(NULL)->position);
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1color(JNIEnv *, jclass)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Vertex *>(NULL)->color);
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1texCoords(JNIEnv *, jclass)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::Vertex *>(NULL)->texCoords);
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1Vertex(JNIEnv *, jclass, jlong this_, jlong thePosition, jlong theColor, jlong theTexCoords)
+{
+    new (reinterpret_cast<void *>(this_)) sf::Vertex(
+        *reinterpret_cast<sf::Vector2f *>(thePosition),
+        *reinterpret_cast<sf::Color *>(theColor),
+        *reinterpret_cast<sf::Vector2f *>(theTexCoords)
+    );
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1sizeof(JNIEnv *, jclass)
+{
+    return static_cast<jlong>(sizeof(sf::VertexArray));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1VertexArray__J(JNIEnv *, jclass, jlong this_)
+{
+    new (reinterpret_cast<void *>(this_)) sf::VertexArray;
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1VertexArray__JIJ(JNIEnv *, jclass, jlong this_, jint type, jlong vertexCount)
+{
+    new (reinterpret_cast<void *>(this_)) sf::VertexArray(
+        static_cast<sf::PrimitiveType>(type),
+        static_cast<std::size_t>(vertexCount)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1destructor(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<sf::VertexArray *>(this_)->~VertexArray();
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getVertexCount(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jlong>(reinterpret_cast<sf::VertexArray *>(this_)->getVertexCount());
+}
+
+jlong Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1operator_1index(JNIEnv *, jclass, jlong this_, jlong index)
+{
+    return reinterpret_cast<jlong>(&reinterpret_cast<sf::VertexArray *>(this_)->operator[](index));
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1clear(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<sf::VertexArray *>(this_)->clear();
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1resize(JNIEnv *, jclass, jlong this_, jlong vertexCount)
+{
+    reinterpret_cast<sf::VertexArray *>(this_)->resize(
+        static_cast<std::size_t>(vertexCount)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1append(JNIEnv *, jclass, jlong this_, jlong vertex)
+{
+    reinterpret_cast<sf::VertexArray *>(this_)->append(
+        *reinterpret_cast<sf::Vertex *>(vertex)
+    );
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1setPrimitiveType(JNIEnv *, jclass, jlong this_, jint type)
+{
+    reinterpret_cast<sf::VertexArray *>(this_)->setPrimitiveType(
+        static_cast<sf::PrimitiveType>(type)
+    );
+}
+
+jint Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getPrimitiveType(JNIEnv *, jclass, jlong this_)
+{
+    return static_cast<jint>(reinterpret_cast<sf::VertexArray *>(this_)->getPrimitiveType());
+}
+
+void Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getBounds(JNIEnv *, jclass, jlong ret, jlong this_)
+{
+    new (reinterpret_cast<void *>(ret)) sf::FloatRect(
+        reinterpret_cast<sf::VertexArray *>(this_)->getBounds()
+    );
 }

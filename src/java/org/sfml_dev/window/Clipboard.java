@@ -28,24 +28,19 @@ public class Clipboard {
     }
 
     public static void setString(String text) {
-        if (text != null) {
-            long u16String = GetStringChars(text, 0);
-
-            long sfString = operator_new(sf_String_sizeof);
-            sf_String_fromUtf16(sfString, u16String, u16String + text.length() * 2);
-
-            ReleaseStringChars(text, u16String);
-
-            sf_Clipboard_setString(sfString);
-            sf_String_destructor(sfString);
-            operator_delete(sfString);
+        if (text == null) {
+            throw new NullPointerException();
         }
-        else {
-            long sfString = operator_new(sf_String_sizeof);
-            sf_String_String(sfString);
-            sf_Clipboard_setString(sfString);
-            sf_String_destructor(sfString);
-            operator_delete(sfString);
-        }
+
+        long u16String = GetStringChars(text, 0);
+
+        long sfString = operator_new(sf_String_sizeof);
+        sf_String_fromUtf16(sfString, u16String, u16String + text.length() * 2);
+
+        ReleaseStringChars(text, u16String);
+
+        sf_Clipboard_setString(sfString);
+        sf_String_destructor(sfString);
+        operator_delete(sfString);
     }
 }

@@ -38,8 +38,8 @@ public class Color implements Cloneable {
     public Color(int color) {
         this.r = (byte)((color & 0xff000000) >>> 24);
         this.g = (byte)((color & 0x00ff0000) >>> 16);
-        this.b = (byte)((color & 0x0000ff00) >>> 8);
-        this.a = (byte)((color & 0x000000ff) >>> 0);
+        this.b = (byte)((color & 0x0000ff00) >>> 8 );
+        this.a = (byte)((color & 0x000000ff) >>> 0 );
     }
 
     public int toInteger() {
@@ -57,24 +57,24 @@ public class Color implements Cloneable {
     }
 
     public Color add(Color val) {
-        return new Color((byte)Math.min((((int)this.r) & 0xff) + (((int)val.r) & 0xff), 255),
-                         (byte)Math.min((((int)this.g) & 0xff) + (((int)val.g) & 0xff), 255),
-                         (byte)Math.min((((int)this.b) & 0xff) + (((int)val.b) & 0xff), 255),
-                         (byte)Math.min((((int)this.a) & 0xff) + (((int)val.a) & 0xff), 255));
+        return new Color((byte)Math.min(((int)this.r & 0xff) + ((int)val.r & 0xff), 255),
+                         (byte)Math.min(((int)this.g & 0xff) + ((int)val.g & 0xff), 255),
+                         (byte)Math.min(((int)this.b & 0xff) + ((int)val.b & 0xff), 255),
+                         (byte)Math.min(((int)this.a & 0xff) + ((int)val.a & 0xff), 255));
     }
 
     public Color subtract(Color val) {
-        return new Color((byte)Math.max((((int)this.r) & 0xff) - (((int)val.r) & 0xff), 0),
-                         (byte)Math.max((((int)this.g) & 0xff) - (((int)val.g) & 0xff), 0),
-                         (byte)Math.max((((int)this.b) & 0xff) - (((int)val.b) & 0xff), 0),
-                         (byte)Math.max((((int)this.a) & 0xff) - (((int)val.a) & 0xff), 0));
+        return new Color((byte)Math.max(((int)this.r & 0xff) - ((int)val.r & 0xff), 0),
+                         (byte)Math.max(((int)this.g & 0xff) - ((int)val.g & 0xff), 0),
+                         (byte)Math.max(((int)this.b & 0xff) - ((int)val.b & 0xff), 0),
+                         (byte)Math.max(((int)this.a & 0xff) - ((int)val.a & 0xff), 0));
     }
 
     public Color multiply(Color val) {
-        return new Color((byte)((((int)this.r) & 0xff) * (((int)val.r) & 0xff) / 255),
-                         (byte)((((int)this.g) & 0xff) * (((int)val.g) & 0xff) / 255),
-                         (byte)((((int)this.b) & 0xff) * (((int)val.b) & 0xff) / 255),
-                         (byte)((((int)this.a) & 0xff) * (((int)val.a) & 0xff) / 255));
+        return new Color((byte)(((int)this.r & 0xff) * ((int)val.r & 0xff) / 255),
+                         (byte)(((int)this.g & 0xff) * ((int)val.g & 0xff) / 255),
+                         (byte)(((int)this.b & 0xff) * ((int)val.b & 0xff) / 255),
+                         (byte)(((int)this.a & 0xff) * ((int)val.a & 0xff) / 255));
     }
 
     public Color clone() {
@@ -82,9 +82,9 @@ public class Color implements Cloneable {
     }
 
     public String toString() {
-        return "{r=" + (((int) r) & 0xff) +
-                ", g=" + (((int) g) & 0xff) +
-                ", b=" + (((int) b) & 0xff) +
-                ", a=" + (((int) a) & 0xff) + "}";
+        return "{r=" + ((int)r & 0xff) +
+                ", g=" + ((int)g & 0xff) +
+                ", b=" + ((int)b & 0xff) +
+                ", a=" + ((int)a & 0xff) + "}";
     }
 }

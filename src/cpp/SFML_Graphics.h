@@ -9,6 +9,54 @@ extern "C" {
 #endif
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_Color
+ * Signature: (JBBBB)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1Color
+  (JNIEnv *, jclass, jlong, jbyte, jbyte, jbyte, jbyte);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_getR
+ * Signature: (J)B
+ */
+JNIEXPORT jbyte JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getR
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_getG
+ * Signature: (J)B
+ */
+JNIEXPORT jbyte JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getG
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_getB
+ * Signature: (J)B
+ */
+JNIEXPORT jbyte JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getB
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Color_getA
+ * Signature: (J)B
+ */
+JNIEXPORT jbyte JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Color_1getA
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
  * Method:    sf_FloatRect_sizeof
  * Signature: ()J
  */
@@ -114,18 +162,18 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transf
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
  * Method:    sf_Transform_transformPoint
- * Signature: (JFF)J
+ * Signature: (JJFF)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JFF
-  (JNIEnv *, jclass, jlong, jfloat, jfloat);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJFF
+  (JNIEnv *, jclass, jlong, jlong, jfloat, jfloat);
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
  * Method:    sf_Transform_transformPoint
- * Signature: (JJ)J
+ * Signature: (JJJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJ
-  (JNIEnv *, jclass, jlong, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transform_1transformPoint__JJJ
+  (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
@@ -226,10 +274,10 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
  * Method:    operator_mul__sf_Transform__sf_Vector2f
- * Signature: (JJ)J
+ * Signature: (JJJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transform_1_1sf_1Vector2f
-  (JNIEnv *, jclass, jlong, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_operator_1mul_1_1sf_1Transform_1_1sf_1Vector2f
+  (JNIEnv *, jclass, jlong, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
@@ -414,6 +462,150 @@ JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Trans
  */
 JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Transformable_1getInverseTransform
   (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Vertex_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Vertex_position
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1position
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Vertex_color
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1color
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Vertex_texCoords
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1texCoords
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_Vertex_Vertex
+ * Signature: (JJJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1Vertex_1Vertex
+  (JNIEnv *, jclass, jlong, jlong, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_sizeof
+ * Signature: ()J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1sizeof
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_VertexArray
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1VertexArray__J
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_VertexArray
+ * Signature: (JIJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1VertexArray__JIJ
+  (JNIEnv *, jclass, jlong, jint, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_destructor
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1destructor
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_getVertexCount
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getVertexCount
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_operator_index
+ * Signature: (JJ)J
+ */
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1operator_1index
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_clear
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1clear
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_resize
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1resize
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_append
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1append
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_setPrimitiveType
+ * Signature: (JI)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1setPrimitiveType
+  (JNIEnv *, jclass, jlong, jint);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_getPrimitiveType
+ * Signature: (J)I
+ */
+JNIEXPORT jint JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getPrimitiveType
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_getBounds
+ * Signature: (JJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1getBounds
+  (JNIEnv *, jclass, jlong, jlong);
+
+/*
+ * Class:     org_sfml_dev_graphics_sys_SFML_Graphics
+ * Method:    sf_VertexArray_draw
+ * Signature: (JJJ)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_graphics_sys_SFML_1Graphics_sf_1VertexArray_1draw
+  (JNIEnv *, jclass, jlong, jlong, jlong);
 
 #ifdef __cplusplus
 }

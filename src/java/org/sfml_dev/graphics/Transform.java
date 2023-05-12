@@ -48,27 +48,46 @@ public class Transform extends CppObject implements Cloneable {
     }
 
     public Vector2f transformPoint(float x, float y) {
-        long ret = sf_Transform_transformPoint(getPtr(), x, y);
-        return new Vector2f(
-            Float.intBitsToFloat((int)ret),
-            Float.intBitsToFloat((int)(ret >> 32))
+        long sfRet = operator_new(sf_Vector2f_sizeof);
+
+        sf_Transform_transformPoint(
+            sfRet,
+            getPtr(),
+            x,
+            y
         );
+
+        Vector2f ret = new Vector2f(
+            sf_Vector2f_getX(sfRet),
+            sf_Vector2f_getY(sfRet)
+        );
+        operator_delete(sfRet);
+        return ret;
     }
 
     public Vector2f transformPoint(Vector2f point) {
         long sfPoint = operator_new(sf_Vector2f_sizeof);
-        sf_Vector2f_Vector2f(sfPoint, point.x, point.y);
+        sf_Vector2f_Vector2f(
+            sfPoint,
+            point.x,
+            point.y
+        );
+    
+        long sfRet = operator_new(sf_Vector2f_sizeof);
 
-        long ret = sf_Transform_transformPoint(
+        sf_Transform_transformPoint(
+            sfRet,
             getPtr(),
             sfPoint
         );
 
         operator_delete(sfPoint);
-        return new Vector2f(
-            Float.intBitsToFloat((int)ret),
-            Float.intBitsToFloat((int)(ret >> 32))
+        Vector2f ret = new Vector2f(
+            sf_Vector2f_getX(sfRet),
+            sf_Vector2f_getY(sfRet)
         );
+        operator_delete(sfRet);
+        return ret;
     }
 
     public FloatRect transformRect(FloatRect rectangle) {
@@ -171,13 +190,16 @@ public class Transform extends CppObject implements Cloneable {
     public Vector2f multiply(Vector2f val) {
         long sfVal = operator_new(sf_Vector2f_sizeof);
         sf_Vector2f_Vector2f(sfVal, val.x, val.y);
-        long ret = operator_mul__sf_Transform__sf_Vector2f(getPtr(), sfVal);
+        long sfRet = operator_new(sf_Vector2f_sizeof);
+
+        operator_mul__sf_Transform__sf_Vector2f(sfRet, this.getPtr(), sfVal);
         operator_delete(sfVal);
-        
-        return new Vector2f(
-            Float.intBitsToFloat((int)ret),
-            Float.intBitsToFloat((int)(ret >> 32))
+        Vector2f ret = new Vector2f(
+            sf_Vector2f_getX(sfRet),
+            sf_Vector2f_getY(sfRet)
         );
+        operator_delete(sfRet);
+        return ret;
     }
 
     public boolean equals(Object val) {
