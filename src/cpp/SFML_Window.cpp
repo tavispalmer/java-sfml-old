@@ -138,18 +138,10 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1destructor(JNIEnv *,
 
 jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Cursor_1loadFromPixels(JNIEnv *, jclass, jlong this_, jlong pixels, jlong size, jlong hotspot)
 {
-    uint8_t cppSize[sizeof(sf::Vector2u)];
-    reinterpret_cast<sf::Vector2u *>(cppSize)->x = (uint32_t)size;
-    reinterpret_cast<sf::Vector2u *>(cppSize)->y = (uint32_t)(size >> 32);
-
-    uint8_t cppHotspot[sizeof(sf::Vector2u)];
-    reinterpret_cast<sf::Vector2u *>(cppHotspot)->x = (uint32_t)hotspot;
-    reinterpret_cast<sf::Vector2u *>(cppHotspot)->y = (uint32_t)(hotspot >> 32);
-
     return static_cast<jboolean>(reinterpret_cast<sf::Cursor *>(this_)->loadFromPixels(
         reinterpret_cast<const sf::Uint8 *>(pixels),
-        *reinterpret_cast<sf::Vector2u *>(cppSize),
-        *reinterpret_cast<sf::Vector2u *>(cppHotspot)
+        *reinterpret_cast<sf::Vector2u *>(size),
+        *reinterpret_cast<sf::Vector2u *>(hotspot)
     ));
 }
 
@@ -531,23 +523,17 @@ jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1isButtonPressed(J
     ));
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__(JNIEnv *, jclass)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J(JNIEnv *, jclass, jlong ret)
 {
-    sf::Vector2i position = sf::Mouse::getPosition();
-    return static_cast<jlong>(
-        ((uint64_t)position.x & 0xffffffff) |
-        ((uint64_t)position.y << 32)
+    new (reinterpret_cast<void *>(ret)) sf::Vector2i(
+        sf::Mouse::getPosition()
     );
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J(JNIEnv *, jclass, jlong relativeTo)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__JJ(JNIEnv *, jclass, jlong ret, jlong relativeTo)
 {
-    sf::Vector2i position = sf::Mouse::getPosition(
-        *reinterpret_cast<sf::Window *>(relativeTo)
-    );
-    return static_cast<jlong>(
-        ((uint64_t)position.x & 0xffffffff) |
-        ((uint64_t)position.y << 32)
+    new (reinterpret_cast<void *>(ret)) sf::Vector2i(
+        sf::Mouse::getPosition(*reinterpret_cast<sf::Window *>(relativeTo))
     );
 }
 
@@ -583,9 +569,6 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1setEnabled(JNIEnv *,
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Sensor_1getValue(JNIEnv *, jclass, jlong ret, jint sensor)
 {
-    // technically not optimized for amd64
-    // but there's no way for java to return
-    // a value larger than 64-bits
     new (reinterpret_cast<void *>(ret)) sf::Vector3f(sf::Sensor::getValue(
         static_cast<sf::Sensor::Type>(sensor)
     ));
@@ -598,28 +581,20 @@ jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1isDown(JNIEnv *, 
     ));
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__I(JNIEnv *, jclass, jint finger)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__JI(JNIEnv *, jclass, jlong ret, jint finger)
 {
-    sf::Vector2i position = sf::Touch::getPosition(
-        static_cast<unsigned int>(finger)
-    );
-
-    return static_cast<jlong>(
-        ((uint64_t)position.x & 0xffffffff) |
-        ((uint64_t)position.y << 32)
+    new (reinterpret_cast<void *>(ret)) sf::Vector2i(
+        sf::Touch::getPosition(static_cast<unsigned int>(finger))
     );
 }
 
-jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__IJ(JNIEnv *, jclass, jint finger, jlong relativeTo)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__JIJ(JNIEnv *, jclass, jlong ret, jint finger, jlong relativeTo)
 {
-    sf::Vector2i position = sf::Touch::getPosition(
-        static_cast<unsigned int>(finger),
-        *reinterpret_cast<sf::Window *>(relativeTo)
-    );
-
-    return static_cast<jlong>(
-        ((uint64_t)position.x & 0xffffffff) |
-        ((uint64_t)position.y << 32)
+    new (reinterpret_cast<void *>(ret)) sf::Vector2i(
+        sf::Touch::getPosition(
+            static_cast<unsigned int>(finger),
+            *reinterpret_cast<sf::Window *>(relativeTo)
+        )
     );
 }
 
@@ -678,20 +653,15 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1
     );
 }
 
-void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JIJIJ(JNIEnv *env, jclass, jlong this_, jobject obj, jlong mode, jint mode1, jlong title, jint style, jlong settings)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJIJ(JNIEnv *env, jclass, jlong this_, jobject obj, jlong mode, jlong title, jint style, jlong settings)
 {
     if (!JavaWindow::env) {
         JavaWindow::env = env;
     }
 
-    uint8_t cppMode[sizeof(sf::VideoMode)];
-    reinterpret_cast<sf::VideoMode *>(cppMode)->width = (uint32_t)mode;
-    reinterpret_cast<sf::VideoMode *>(cppMode)->height = (uint32_t)(mode >> 32);
-    reinterpret_cast<sf::VideoMode *>(cppMode)->bitsPerPixel = (uint32_t)mode1;
-
     new (reinterpret_cast<void *>(this_)) JavaWindow(
         env->NewWeakGlobalRef(obj),
-        *reinterpret_cast<sf::VideoMode *>(cppMode),
+        *reinterpret_cast<sf::VideoMode *>(mode),
         *reinterpret_cast<sf::String *>(title),
         static_cast<sf::Uint32>(style),
         *reinterpret_cast<sf::ContextSettings *>(settings)
@@ -716,15 +686,10 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1destructor(JNIEnv *,
     reinterpret_cast<JavaWindow *>(this_)->~JavaWindow();
 }
 
-void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJIJIJ(JNIEnv *, jclass, jlong this_, jlong mode, jint mode1, jlong title, jint style, jlong settings)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJJIJ(JNIEnv *, jclass, jlong this_, jlong mode, jlong title, jint style, jlong settings)
 {
-    uint8_t cppMode[sizeof(sf::VideoMode)];
-    reinterpret_cast<sf::VideoMode *>(cppMode)->width = (uint32_t)mode;
-    reinterpret_cast<sf::VideoMode *>(cppMode)->height = (uint32_t)(mode >> 32);
-    reinterpret_cast<sf::VideoMode *>(cppMode)->bitsPerPixel = (uint32_t)mode1;
-
     reinterpret_cast<sf::Window *>(this_)->create(
-        *reinterpret_cast<sf::VideoMode *>(cppMode),
+        *reinterpret_cast<sf::VideoMode *>(mode),
         *reinterpret_cast<sf::String *>(title),
         static_cast<sf::Uint32>(style),
         *reinterpret_cast<sf::ContextSettings *>(settings)
@@ -768,12 +733,11 @@ jboolean Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1waitEvent(JNIEnv
     ));
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getPosition(JNIEnv *, jclass, jlong this_)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getPosition(JNIEnv *, jclass, jlong ret, jlong this_)
 {
-    sf::Vector2i position = reinterpret_cast<sf::Window *>(this_)->getPosition();
-    return static_cast<jlong>(
-        (static_cast<uint64_t>(position.x) & 0xffffffff) | 
-        (static_cast<uint64_t>(position.y) << 32));
+    new (reinterpret_cast<void *>(ret)) sf::Vector2i(
+        reinterpret_cast<sf::Window *>(this_)->getPosition()
+    );
 }
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setPosition(JNIEnv *, jclass, jlong this_, jlong position)
@@ -783,12 +747,11 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setPosition(JNIEnv *
     );
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSize(JNIEnv *, jclass, jlong this_)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSize(JNIEnv *, jclass, jlong ret, jlong this_)
 {
-    sf::Vector2u size = reinterpret_cast<sf::Window *>(this_)->getSize();
-    return static_cast<jlong>(
-        (static_cast<uint64_t>(size.x) & 0xffffffff) | 
-        (static_cast<uint64_t>(size.y) << 32));
+    new (reinterpret_cast<void *>(ret)) sf::Vector2u(
+        reinterpret_cast<sf::Window *>(this_)->getSize()
+    );
 }
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1setSize(JNIEnv *, jclass, jlong this_, jlong size)

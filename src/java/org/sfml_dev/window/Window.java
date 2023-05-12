@@ -70,6 +70,14 @@ public class Window extends GlResource {
     }
 
     public Window(VideoMode mode, String title, int style, ContextSettings settings) {
+        long sfMode = operator_new(sf_VideoMode_sizeof);
+        sf_VideoMode_VideoMode(
+            sfMode,
+            mode.width,
+            mode.height,
+            mode.bitsPerPixel
+        );
+        
         long sfTitle = operator_new(sf_String_sizeof);
         if (title != null) {
             long chars = GetStringChars(title, 0);
@@ -95,8 +103,7 @@ public class Window extends GlResource {
         sf_Window_Window(
             getPtr(),
             this,
-            (long)mode.width | ((long)mode.height << 32),
-            mode.bitsPerPixel,
+            sfMode,
             sfTitle,
             style,
             sfSettings
@@ -106,6 +113,8 @@ public class Window extends GlResource {
 
         sf_String_destructor(sfTitle);
         operator_delete(sfTitle);
+
+        operator_delete(sfMode);
     }
 
     public Window(WindowHandle handle) {
@@ -144,6 +153,14 @@ public class Window extends GlResource {
     }
 
     public void create(VideoMode mode, String title, int style, ContextSettings settings) {
+        long sfMode = operator_new(sf_VideoMode_sizeof);
+        sf_VideoMode_VideoMode(
+            sfMode,
+            mode.width,
+            mode.height,
+            mode.bitsPerPixel
+        );
+        
         long sfTitle = operator_new(sf_String_sizeof);
         if (title != null) {
             long chars = GetStringChars(title, 0);
@@ -168,8 +185,7 @@ public class Window extends GlResource {
         
         sf_Window_create(
             getPtr(),
-            (long)mode.width | ((long)mode.height << 32),
-            mode.bitsPerPixel,
+            sfMode,
             sfTitle,
             style,
             sfSettings
@@ -179,6 +195,8 @@ public class Window extends GlResource {
 
         sf_String_destructor(sfTitle);
         operator_delete(sfTitle);
+
+        operator_delete(sfMode);
     }
 
     public void create(WindowHandle handle) {
@@ -247,11 +265,15 @@ public class Window extends GlResource {
     }
 
     public Vector2i getPosition() {
-        long position = sf_Window_getPosition(getPtr());
-        return new Vector2i(
-            (int)position,
-            (int)(position >> 32)
+        long sfPosition = operator_new(sf_Vector2i_sizeof);
+        sf_Window_getPosition(sfPosition, getPtr());
+
+        Vector2i position = new Vector2i(
+            sf_Vector2i_getX(sfPosition),
+            sf_Vector2i_getY(sfPosition)
         );
+        operator_delete(sfPosition);
+        return position;
     }
 
     public void setPosition(Vector2i position) {
@@ -268,11 +290,15 @@ public class Window extends GlResource {
     }
 
     public Vector2i getSize() {
-        long size = sf_Window_getSize(getPtr());
-        return new Vector2i(
-            (int)size,
-            (int)(size >> 32)
+        long sfSize = operator_new(sf_Vector2u_sizeof);
+        sf_Window_getSize(sfSize, getPtr());
+
+        Vector2i size = new Vector2i(
+            sf_Vector2u_getX(sfSize),
+            sf_Vector2u_getY(sfSize)
         );
+        operator_delete(sfSize);
+        return size;
     }
 
     public void setSize(Vector2i size) {

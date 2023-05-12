@@ -4,6 +4,8 @@ import java.util.function.LongConsumer;
 
 import org.sfml_dev.system.*;
 import static org.sfml_dev.system.sys.jni.*;
+import static org.sfml_dev.system.sys.new_.*;
+import static org.sfml_dev.system.sys.SFML_System.*;
 import static org.sfml_dev.window.sys.SFML_Window.*;
 
 public class Cursor extends CppObject {
@@ -31,13 +33,29 @@ public class Cursor extends CppObject {
     public boolean loadFromPixels(byte[] pixels, Vector2i size, Vector2i hotspot) {
         long elems = GetByteArrayElements(pixels, 0);
 
+        long sfSize = operator_new(sf_Vector2u_sizeof);
+        sf_Vector2u_Vector2u(
+            sfSize,
+            size.x,
+            size.y
+        );
+
+        long sfHotspot = operator_new(sf_Vector2u_sizeof);
+        sf_Vector2u_Vector2u(
+            sfHotspot,
+            hotspot.x,
+            hotspot.y
+        );
+
         boolean ret = sf_Cursor_loadFromPixels(
             getPtr(),
             elems,
-            size.x | (size.y << 32),
-            hotspot.x | (hotspot.y << 32)
+            sfSize,
+            sfHotspot
         );
 
+        operator_delete(sfHotspot);
+        operator_delete(sfSize);
         ReleaseByteArrayElements(pixels, elems, JNI_ABORT);
         return ret;
     }

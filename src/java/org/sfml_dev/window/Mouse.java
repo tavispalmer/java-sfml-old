@@ -27,19 +27,29 @@ public class Mouse {
     }
 
     public static Vector2i getPosition() {
-        long sfPosition = sf_Mouse_getPosition();
-        return new Vector2i(
-            (int)sfPosition,
-            (int)(sfPosition >> 32)
+        long sfPosition = operator_new(sf_Vector2i_sizeof);
+
+        sf_Mouse_getPosition(sfPosition);
+
+        Vector2i position = new Vector2i(
+            sf_Vector2i_getX(sfPosition),
+            sf_Vector2i_getY(sfPosition)
         );
+        operator_delete(sfPosition);
+        return position;
     }
 
     public static Vector2i getPosition(Window relativeTo) {
-        long sfPosition = sf_Mouse_getPosition(relativeTo.getPtr());
-        return new Vector2i(
-            (int)sfPosition,
-            (int)(sfPosition >> 32)
+        long sfPosition = operator_new(sf_Vector2i_sizeof);
+
+        sf_Mouse_getPosition(sfPosition, relativeTo.getPtr());
+
+        Vector2i position = new Vector2i(
+            sf_Vector2i_getX(sfPosition),
+            sf_Vector2i_getY(sfPosition)
         );
+        operator_delete(sfPosition);
+        return position;
     }
 
     public static void setPosition(Vector2i position) {

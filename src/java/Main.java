@@ -7,10 +7,9 @@ import org.sfml_dev.graphics.*;
 public class Main {
     public static void main(String[] args) {
 
-        Clock clock = new Clock();
-        for (int i = 0; i < 100; ++i) {
-            System.out.println(clock.restart().asMicroseconds());
-        }
+        Vector2f vector2f = null;
+        vector2f.clone();
+        
 
         Window window = new Window(
             new VideoMode(

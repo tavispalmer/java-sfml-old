@@ -698,18 +698,18 @@ JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Mouse_getPosition
- * Signature: ()J
+ * Signature: (J)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__
-  (JNIEnv *, jclass);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J
+  (JNIEnv *, jclass, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Mouse_getPosition
- * Signature: (J)J
+ * Signature: (JJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__J
-  (JNIEnv *, jclass, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Mouse_1getPosition__JJ
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -762,18 +762,18 @@ JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Touch_getPosition
- * Signature: (I)J
+ * Signature: (JI)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__I
-  (JNIEnv *, jclass, jint);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__JI
+  (JNIEnv *, jclass, jlong, jint);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Touch_getPosition
- * Signature: (IJ)I
+ * Signature: (JIJ)V
  */
-JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__IJ
-  (JNIEnv *, jclass, jint, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Touch_1getPosition__JIJ
+  (JNIEnv *, jclass, jlong, jint, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -850,10 +850,10 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Wi
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Window_Window
- * Signature: (JLorg/sfml_dev/window/Window;JIJIJ)V
+ * Signature: (JLorg/sfml_dev/window/Window;JJIJ)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JIJIJ
-  (JNIEnv *, jclass, jlong, jobject, jlong, jint, jlong, jint, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJIJ
+  (JNIEnv *, jclass, jlong, jobject, jlong, jlong, jint, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -874,10 +874,10 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1de
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Window_create
- * Signature: (JJIJIJ)V
+ * Signature: (JJJIJ)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJIJIJ
-  (JNIEnv *, jclass, jlong, jlong, jint, jlong, jint, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJJIJ
+  (JNIEnv *, jclass, jlong, jlong, jlong, jint, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -930,10 +930,10 @@ JNIEXPORT jboolean JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Window_getPosition
- * Signature: (J)J
+ * Signature: (JJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getPosition
-  (JNIEnv *, jclass, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getPosition
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -946,10 +946,10 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1se
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
  * Method:    sf_Window_getSize
- * Signature: (J)J
+ * Signature: (JJ)V
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSize
-  (JNIEnv *, jclass, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSize
+  (JNIEnv *, jclass, jlong, jlong);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
