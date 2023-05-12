@@ -58,7 +58,7 @@ public class Window extends GlResource {
     public EventHandler<SensorEvent> sensorChanged = null;
 
     public Window() {
-        sf_Window_Window(getPtr(), this);
+        JavaWindow_JavaWindow(getPtr(), this);
     }
 
     public Window(VideoMode mode, String title) {
@@ -100,13 +100,13 @@ public class Window extends GlResource {
             settings.sRgbCapable
         );
         
-        sf_Window_Window(
+        JavaWindow_JavaWindow(
             getPtr(),
-            this,
             sfMode,
             sfTitle,
             style,
-            sfSettings
+            sfSettings,
+            this
         );
 
         operator_delete(sfSettings);
@@ -134,11 +134,11 @@ public class Window extends GlResource {
             settings.sRgbCapable
         );
         
-        sf_Window_Window(
+        JavaWindow_JavaWindow(
             getPtr(),
-            this,
             handle.getPtr(),
-            sfSettings
+            sfSettings,
+            this
         );
 
         operator_delete(sfSettings);
@@ -411,15 +411,15 @@ public class Window extends GlResource {
     }
 
     protected void onCreate() {
-        // Nothing by default
+        sf_Window_onCreate(getPtr());
     }
 
     protected void onResize() {
-        // Nothing by default
+        sf_Window_onResize(getPtr());
     }
 
     protected long sizeof() {
-        return sf_Window_sizeof;
+        return JavaWindow_sizeof;
     }
 
     protected LongConsumer getDestructor() {

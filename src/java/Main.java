@@ -7,15 +7,8 @@ import org.sfml_dev.graphics.*;
 public class Main {
     public static void main(String[] args) {
 
-        Vector2f vector2f = null;
-        vector2f.clone();
-        
-
         Window window = new Window(
-            new VideoMode(
-                800,
-                600
-            ),
+            new VideoMode(800, 600),
             "title"
         );
         window.setFramerateLimit(60);

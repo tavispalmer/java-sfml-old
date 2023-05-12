@@ -17,11 +17,19 @@ public:
 
 class JavaWindow : public sf::Window {
 public:
-    static JNIEnv *env;
+    static thread_local JNIEnv *env;
 
     JavaWindow(jobject obj) : Window(), obj(obj) {}
-    JavaWindow(jobject obj, sf::VideoMode mode, const sf::String &title, sf::Uint32 style, const sf::ContextSettings &settings) : Window(mode, title, style, settings), obj(obj) {}
-    JavaWindow(jobject obj, sf::WindowHandle handle, const sf::ContextSettings &settings) : Window(handle, settings), obj(obj) {}
+    JavaWindow(sf::VideoMode mode, const sf::String &title, sf::Uint32 style, const sf::ContextSettings &settings, jobject obj) : Window(mode, title, style, settings), obj(obj) {}
+    JavaWindow(sf::WindowHandle handle, const sf::ContextSettings &settings, jobject obj) : Window(handle, settings), obj(obj) {}
+
+    inline void onCreate_() {
+        sf::Window::onCreate();
+    }
+
+    inline void onResize_() {
+        sf::Window::onResize();
+    }
 
 protected:
     virtual void onCreate() {
@@ -47,16 +55,16 @@ protected:
     }
 
 private:
-    static jclass windowClass;
-    static jmethodID windowOnCreate;
-    static jmethodID windowOnResize;
+    static thread_local jclass windowClass;
+    static thread_local jmethodID windowOnCreate;
+    static thread_local jmethodID windowOnResize;
     jobject obj;
 };
 
-JNIEnv *JavaWindow::env = NULL;
-jclass JavaWindow::windowClass = NULL;
-jmethodID JavaWindow::windowOnCreate = NULL;
-jmethodID JavaWindow::windowOnResize = NULL;
+thread_local JNIEnv *JavaWindow::env = NULL;
+thread_local jclass JavaWindow::windowClass = NULL;
+thread_local jmethodID JavaWindow::windowOnCreate = NULL;
+thread_local jmethodID JavaWindow::windowOnResize = NULL;
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Clipboard_1getString(JNIEnv *, jclass, jlong ret)
 {
@@ -637,12 +645,12 @@ jint Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_1getBitsPerPixel(J
     return static_cast<jint>(reinterpret_cast<sf::VideoMode *>(this_)->bitsPerPixel);
 }
 
-jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1sizeof(JNIEnv *, jclass)
+jlong Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1sizeof(JNIEnv *, jclass)
 {
     return static_cast<jlong>(sizeof(JavaWindow));
 }
 
-void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2(JNIEnv *env, jclass, jlong this_, jobject obj)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JLorg_sfml_1dev_window_Window_2(JNIEnv *env, jclass, jlong this_, jobject obj)
 {
     if (!JavaWindow::env) {
         JavaWindow::env = env;
@@ -653,37 +661,37 @@ void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1
     );
 }
 
-void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJIJ(JNIEnv *env, jclass, jlong this_, jobject obj, jlong mode, jlong title, jint style, jlong settings)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JJJIJLorg_sfml_1dev_window_Window_2(JNIEnv *env, jclass, jlong this_, jlong mode, jlong title, jint style, jlong settings, jobject obj)
 {
     if (!JavaWindow::env) {
         JavaWindow::env = env;
     }
 
     new (reinterpret_cast<void *>(this_)) JavaWindow(
-        env->NewWeakGlobalRef(obj),
         *reinterpret_cast<sf::VideoMode *>(mode),
         *reinterpret_cast<sf::String *>(title),
         static_cast<sf::Uint32>(style),
-        *reinterpret_cast<sf::ContextSettings *>(settings)
+        *reinterpret_cast<sf::ContextSettings *>(settings),
+        env->NewWeakGlobalRef(obj)
     );
 }
 
-void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJ(JNIEnv *env, jclass, jlong this_, jobject obj, jlong handle, jlong settings)
+void Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JJJLorg_sfml_1dev_window_Window_2(JNIEnv *env, jclass, jlong this_, jlong handle, jlong settings, jobject obj)
 {
     if (!JavaWindow::env) {
         JavaWindow::env = env;
     }
 
     new (reinterpret_cast<void *>(this_)) JavaWindow(
-        env->NewWeakGlobalRef(obj),
         *reinterpret_cast<sf::WindowHandle *>(&handle),
-        *reinterpret_cast<sf::ContextSettings *>(settings)
+        *reinterpret_cast<sf::ContextSettings *>(settings),
+        env->NewWeakGlobalRef(obj)
     );
 }
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1destructor(JNIEnv *, jclass, jlong this_)
 {
-    reinterpret_cast<JavaWindow *>(this_)->~JavaWindow();
+    reinterpret_cast<sf::Window *>(this_)->~Window();
 }
 
 void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1create__JJJIJ(JNIEnv *, jclass, jlong this_, jlong mode, jlong title, jint style, jlong settings)
@@ -859,4 +867,14 @@ jlong Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSystemHandle(JNI
 {
     sf::WindowHandle systemHandle = reinterpret_cast<sf::Window *>(this_)->getSystemHandle();
     return *reinterpret_cast<jlong *>(&systemHandle);
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1onCreate(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<JavaWindow *>(this_)->onCreate_();
+}
+
+void Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1onResize(JNIEnv *, jclass, jlong this_)
+{
+    reinterpret_cast<JavaWindow *>(this_)->onResize_();
 }

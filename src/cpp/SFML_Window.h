@@ -833,35 +833,35 @@ JNIEXPORT jint JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1VideoMode_
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
- * Method:    sf_Window_sizeof
+ * Method:    JavaWindow_sizeof
  * Signature: ()J
  */
-JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1sizeof
+JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1sizeof
   (JNIEnv *, jclass);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
- * Method:    sf_Window_Window
+ * Method:    JavaWindow_JavaWindow
  * Signature: (JLorg/sfml_dev/window/Window;)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JLorg_sfml_1dev_window_Window_2
   (JNIEnv *, jclass, jlong, jobject);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
- * Method:    sf_Window_Window
- * Signature: (JLorg/sfml_dev/window/Window;JJIJ)V
+ * Method:    JavaWindow_JavaWindow
+ * Signature: (JJJIJLorg/sfml_dev/window/Window;)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJIJ
-  (JNIEnv *, jclass, jlong, jobject, jlong, jlong, jint, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JJJIJLorg_sfml_1dev_window_Window_2
+  (JNIEnv *, jclass, jlong, jlong, jlong, jint, jlong, jobject);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
- * Method:    sf_Window_Window
- * Signature: (JLorg/sfml_dev/window/Window;JJ)V
+ * Method:    JavaWindow_JavaWindow
+ * Signature: (JJJLorg/sfml_dev/window/Window;)V
  */
-JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1Window__JLorg_sfml_1dev_window_Window_2JJ
-  (JNIEnv *, jclass, jlong, jobject, jlong, jlong);
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_JavaWindow_1JavaWindow__JJJLorg_sfml_1dev_window_Window_2
+  (JNIEnv *, jclass, jlong, jlong, jlong, jobject);
 
 /*
  * Class:     org_sfml_dev_window_sys_SFML_Window
@@ -1077,6 +1077,22 @@ JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1di
  * Signature: (J)J
  */
 JNIEXPORT jlong JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1getSystemHandle
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_onCreate
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1onCreate
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     org_sfml_dev_window_sys_SFML_Window
+ * Method:    sf_Window_onResize
+ * Signature: (J)V
+ */
+JNIEXPORT void JNICALL Java_org_sfml_1dev_window_sys_SFML_1Window_sf_1Window_1onResize
   (JNIEnv *, jclass, jlong);
 
 #ifdef __cplusplus

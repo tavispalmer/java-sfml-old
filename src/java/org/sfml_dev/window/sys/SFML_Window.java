@@ -28,7 +28,7 @@ public class SFML_Window {
     public static final long sf_Joystick_Identification_sizeof = sf_Joystick_Identification_sizeof();
     public static final long sf_Joystick_Identification_name = sf_Joystick_Identification_name();
     public static final long sf_VideoMode_sizeof = sf_VideoMode_sizeof();
-    public static final long sf_Window_sizeof = sf_Window_sizeof();
+    public static final long JavaWindow_sizeof = JavaWindow_sizeof();
 
     public static native void sf_Clipboard_getString(long ret);
     public static native void sf_Clipboard_setString(long text);
@@ -133,10 +133,10 @@ public class SFML_Window {
     public static native int sf_VideoMode_getWidth(long this_);
     public static native int sf_VideoMode_getHeight(long this_);
     public static native int sf_VideoMode_getBitsPerPixel(long this_);
-    private static native long sf_Window_sizeof();
-    public static native void sf_Window_Window(long this_, Window obj);
-    public static native void sf_Window_Window(long this_, Window obj, long mode, long title, int style, long settings);
-    public static native void sf_Window_Window(long this_, Window obj, long handle, long settings);
+    private static native long JavaWindow_sizeof();
+    public static native void JavaWindow_JavaWindow(long this_, Window obj);
+    public static native void JavaWindow_JavaWindow(long this_, long mode, long title, int style, long settings, Window obj);
+    public static native void JavaWindow_JavaWindow(long this_, long handle, long settings, Window obj);
     public static native void sf_Window_destructor(long this_);
     public static native void sf_Window_create(long this_, long mode, long title, int style, long settings);
     public static native void sf_Window_create(long this_, long handle, long settings);
@@ -164,4 +164,6 @@ public class SFML_Window {
     public static native boolean sf_Window_hasFocus(long this_);
     public static native void sf_Window_display(long this_);
     public static native long sf_Window_getSystemHandle(long this_);
+    public static native void sf_Window_onCreate(long this_);
+    public static native void sf_Window_onResize(long this_);
 }
