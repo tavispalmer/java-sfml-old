@@ -8,6 +8,7 @@ CXXFLAGS := -fPIC -O2 \
 	-I/usr/lib/jvm/java-20-openjdk/include/linux
 
 SFML_SYSTEM_CLASSFILES := \
+	build/java/org/sfml_dev/OpenGL.class \
 	build/java/org/sfml_dev/system/Clock.class \
 	build/java/org/sfml_dev/system/CppObject.class \
 	build/java/org/sfml_dev/system/Time.class \
